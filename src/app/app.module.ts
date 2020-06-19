@@ -4,13 +4,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
+import { AccordionModule } from 'primeng/accordion';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 
 import { AppComponent } from './app.component';
 
-import { DashboardComponent } from './dashboard/dashboard.component';
 import {
   AgmCoreModule
 } from '@agm/core';
@@ -27,7 +27,8 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
     AppRoutingModule,
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
-    })
+    }),
+    AccordionModule
   ],
   declarations: [
     AppComponent,

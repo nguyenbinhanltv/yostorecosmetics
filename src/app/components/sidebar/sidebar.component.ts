@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 declare const $: any;
 declare interface RouteInfo {
@@ -39,6 +39,8 @@ export const ROUTES: RouteInfo[] = [
 })
 export class SidebarComponent implements OnInit {
   menuItems: any[];
+
+  @Input() visibleSidebar: boolean;
 
   constructor() {}
 
