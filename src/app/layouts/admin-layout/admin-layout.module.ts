@@ -14,9 +14,11 @@ import { ToastModule } from 'primeng/toast';
 import { PanelModule } from 'primeng/panel';
 import { MessageModule } from 'primeng/message';
 import { SplitButtonModule } from 'primeng/splitbutton';
+import { InputNumberModule } from 'primeng/inputnumber';
 import { ProductsComponent } from 'app/pages/products/products.component';
 import { CreateComponent } from 'app/pages/products/create/create.component';
 import { MessageService } from 'primeng/api';
+import { VariantsComponent } from 'app/pages/variants/variants.component';
 
 @NgModule({
   imports: [
@@ -34,11 +36,13 @@ import { MessageService } from 'primeng/api';
     SplitButtonModule,
     ToastModule,
     MessageModule,
-    PanelModule
+    PanelModule,
+    InputNumberModule
   ],
   declarations: [
     ProductsComponent,
-    CreateComponent
+    CreateComponent,
+    VariantsComponent
   ],
   providers: [MessageService]
 })

@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { SelectItem } from 'primeng/api';
 import { MessageService } from 'primeng/api';
+import { map } from 'jquery';
 
 @Component({
   selector: 'app-create',
@@ -46,9 +47,14 @@ export class CreateComponent implements OnInit {
   onSubmit(value: string) {
     this.submitted = true;
     this.messageService.add({
-      severity: 'info',
-      summary: 'Success',
-      detail: 'Form Submitted',
+      severity: 'success',
+      summary: 'OK',
+      detail: 'Lưu thông tin sản phẩm thành công.',
     });
+    console.log(this.productFrom);
+  }
+
+  calPrices() {
+
   }
 }

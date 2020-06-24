@@ -40,9 +40,21 @@ div {
 }
 
 .panel-left {
-    width: 50% !important;
+    width: 45% !important;
 }
 
 .panel-right {
-    width: 40% !important;
+    width: 45% !important;
+}
+
+p {
+    font-size: xx-large;
+}
+
+.ui-toolbar-group-left {
+    width: 100%;
+}
+
+p {
+    margin: 20px;
 }

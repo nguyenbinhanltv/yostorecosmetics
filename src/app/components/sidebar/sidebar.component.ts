@@ -9,9 +9,8 @@ declare interface RouteInfo {
 }
 export const ROUTES: RouteInfo[] = [
   { path: '/products', title: 'Danh sách sản phẩm', icon: 'dashboard', class: '' },
-  { path: '/user-profile', title: 'Khách hàng', icon: 'person', class: '' },
   {
-    path: '/table-list',
+    path: '/variants',
     title: 'Quản lý kho',
     icon: 'house_siding',
     class: '',
@@ -23,13 +22,7 @@ export const ROUTES: RouteInfo[] = [
     class: '',
   },
   { path: '/icons', title: 'Kiểm hàng', icon: 'shopping_cart', class: '' },
-  { path: '/maps', title: 'Chuyển hàng', icon: 'remove_shopping_cart', class: '' },
-  {
-    path: '/notifications',
-    title: 'Điều chỉnh giá vốn',
-    icon: 'monetization_on',
-    class: '',
-  },
+  { path: '/maps', title: 'Bán hàng', icon: 'remove_shopping_cart', class: '' },
 ];
 
 @Component({
