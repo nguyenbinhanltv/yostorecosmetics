@@ -1,45 +1,119 @@
 <div class="main-content">
 
     <div class="container-fluid">
-        <div class="row">
+        <div>
+
+        </div>
+        <div class="column">
             <p-toast [style]="{marginTop: '10px'}"></p-toast>
 
-            <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
-                <p-panel header="Validate">
-                    <div class="p-fluid forms-grid" style="margin: 1em 0">
-                        <div>
-                            <div>Tên sản phẩm *</div>
-                            <input pInputText type="text" formControlName="firstname" placeholder="Required" />
-                            <p-message severity="error" text="Firstname is required"
-                                *ngIf="!userform.controls['firstname'].valid&&userform.controls['firstname'].dirty">
-                            </p-message>
+            <form [formGroup]="productFrom" (ngSubmit)="onSubmit(productFrom.value)">
+                <div class="row" style="width: 100%;">
+                    <p-panel header="Sản phẩm" class="panel-left">
+                        <div class="p-fluid forms-grid" style="margin: 1em 0">
+                            <div>
+                                <div>Tên sản phẩm *</div>
+                                <input pInputText type="text" formControlName="productname"
+                                    placeholder="Nhập tên sản phẩm" />
+                                <p-message severity="error" text="Product name is required"
+                                    *ngIf="!productFrom.controls['productname'].valid && productFrom.controls['productname'].dirty">
+                                </p-message>
+                            </div>
+                            <div>
+                                <div>Mã sản phẩm / SKU *</div>
+                                <input pInputText type="text" formControlName="productid" placeholder="" />
+                                <p-message severity="error" text="Product id is required"
+                                    *ngIf="!productFrom.controls['productid'].valid && productFrom.controls['productid'].dirty">
+                                </p-message>
+                            </div>
+                            <div>
+                                <div>Barcode *</div>
+                                <input pInputText type="text" formControlName="barcode" placeholder="" />
+                                <p-message severity="error" text="Barcode is required"
+                                    *ngIf="!productFrom.controls['barcode'].valid && productFrom.controls['barcode'].dirty">
+                                </p-message>
+                            </div>
                         </div>
-                        <div>
-                            <div>Mã sản phẩm / SKU *</div>
-                            <input pInputText type="text" formControlName="lastname" placeholder="Required" />
-                            <p-message severity="error" text="Lastname is required"
-                                *ngIf="!userform.controls['lastname'].valid&&userform.controls['lastname'].dirty">
-                            </p-message>
+                    </p-panel>
+
+                    <p-panel header="Giá sản phẩm" class="panel-right">
+                        <div class="p-fluid forms-grid" style="margin: 1em 0">
+                            <div>
+                                <div>Giá bán lẻ *</div>
+                                <input pInputText type="number" formControlName="productretailprices" placeholder="đ" />
+                                <p-message severity="error" text="Product retail prices is required"
+                                    *ngIf="!productFrom.controls['productretailprices'].valid && productFrom.controls['productretailprices'].dirty">
+                                </p-message>
+                            </div>
+                            <div>
+                                <div>Giá bán buôn *</div>
+                                <input pInputText type="numbe" formControlName="productwholesaleprices"
+                                    placeholder="đ" />
+                                <p-message severity="error" text="Product whole sale prices is required"
+                                    *ngIf="!productFrom.controls['productwholesaleprices'].valid && productFrom.controls['productwholesaleprices'].dirty">
+                                </p-message>
+                            </div>
+                            <div>
+                                <div>Giá nhập *</div>
+                                <input pInputText type="number" formControlName="productentryprices" placeholder="đ" />
+                                <p-message severity="error" text="Product entry prices is required"
+                                    *ngIf="!productFrom.controls['productentryprices'].valid && productFrom.controls['productentryprices'].dirty">
+                                </p-message>
+                            </div>
                         </div>
-                        <div>
-                            <div>Barcode *</div>
-                            <input pInputText type="password" formControlName="password"
-                                placeholder="Required - Min(6)" />
-                            <p-message severity="error"
-                                [text]="userform.controls['password'].errors['required'] ? 'Password is required' : userform.controls['password'].errors['minlength'] ? 'Must be longer than 6 characters' : ''"
-                                *ngIf="!userform.controls['password'].valid&&userform.controls['password'].dirty">
-                            </p-message>
+                    </p-panel>
+                </div>
+
+                <div class="row" style="width: 100%;">
+                    <p-panel header="Kho hàng" class="panel-left">
+                        <div class="p-fluid forms-grid" style="margin: 1em 0">
+                            <div>
+                                <div>Khối lượng *</div>
+                                <input pInputText type="text" formControlName="mass" placeholder="Required" />
+                                <p-message severity="error" text="Mass is required"
+                                    *ngIf="!productFrom.controls['mass'].valid && productFrom.controls['mass'].dirty">
+                                </p-message>
+                            </div>
+                            <div>
+                                <div>Đơn vị tính *</div>
+                                <input pInputText type="text" formControlName="unit" placeholder="Required" />
+                                <p-message severity="error" text="Unit id is required"
+                                    *ngIf="!productFrom.controls['unit'].valid && productFrom.controls['unit'].dirty">
+                                </p-message>
+                            </div>
                         </div>
-                        <div>
-                            <div>Description</div>
-                            <textarea pInputTextarea type="text" formControlName="description"></textarea>
+                    </p-panel>
+
+                    <p-panel header="Phân loại" class="panel-right">
+                        <div class="p-fluid forms-grid" style="margin: 1em 0">
+                            <div>
+                                <div>Loại sản phẩm *</div>
+                                <input pInputText type="" formControlName="producttype"
+                                    placeholder="Nhập loại sản phẩm" />
+                                <p-message severity="error" text="Product type is required"
+                                    *ngIf="!productFrom.controls['producttype'].valid && productFrom.controls['producttype'].dirty">
+                                </p-message>
+                            </div>
+                            <div>
+                                <div>Đơn vị tính *</div>
+                                <input pInputText type="text" formControlName="brand"
+                                    placeholder="Nhập nhãn hiệu sản phẩm" />
+                                <p-message severity="error" text="Unit id is required"
+                                    *ngIf="!productFrom.controls['brand'].valid && productFrom.controls['brand'].dirty">
+                                </p-message>
+                            </div>
                         </div>
-                        <div>
-                            <button pButton type="submit" label="Submit" [disabled]="!userform.valid"></button>
-                        </div>
-                    </div>
-                </p-panel>
+                    </p-panel>
+
+                </div>
             </form>
         </div>
+
+        <div style="display: flex; flex-direction: row-reverse;">
+            <button pButton type="reset" label="Hủy" routerLink="/products"></button>
+            <button pButton type="submit" label="Lưu" [disabled]="!productFrom.valid"></button>
+        </div>
+
     </div>
+
 </div>

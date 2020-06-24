@@ -26,3 +26,23 @@ textarea {
 .main-content {
     margin: 0 !important;
 }
+
+p-panel {
+    margin: 20px;
+}
+
+button {
+    margin: 10px;
+}
+
+div {
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+.panel-left {
+    width: 50% !important;
+}
+
+.panel-right {
+    width: 40% !important;
+}
