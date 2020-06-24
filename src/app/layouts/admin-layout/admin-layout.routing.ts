@@ -1,7 +1,8 @@
 import { Routes } from '@angular/router';
-
-import { DashboardComponent } from '../../dashboard/dashboard.component';
+import { ProductsComponent } from 'app/pages/products/products.component';
+import { CreateComponent } from 'app/pages/products/create/create.component';
 
 export const AdminLayoutRoutes: Routes = [
-    { path: 'dashboard',      component: DashboardComponent },
+  { path: 'products', component: ProductsComponent },
+  { path: 'products/create', component: CreateComponent },
 ];
