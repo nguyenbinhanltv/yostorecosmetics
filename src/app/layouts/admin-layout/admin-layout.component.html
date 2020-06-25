@@ -1,9 +1,14 @@
-<div class="wrapper">
-    <div class="sidebar" data-color="danger" data-background-color="white" data-image="./assets/img/sidebar-1.jpg">
-        <app-sidebar></app-sidebar>
+<p-sidebar [(visible)]="display" [baseZIndex]="10000" [showCloseIcon]="false">
+    <div class="sidebar" data-color="danger" data-background-color="white" data-image="./assets/img/sidebar-1.jpg" style="width: 100%;">
+        <app-sidebar></app-sidebar>   
         <div class="sidebar-background" style="background-image: url(./assets/img/sidebar-4.jpg)"></div>
     </div>
-    <div class="main-panel">
+</p-sidebar>
+
+
+<div class="wrapper">
+    <div class="main-panel" style="width: 100%;">
+        <button pButton type="button" (click)="display = true" icon="pi pi-align-justify" class="ui-button-raised ui-button-secondary"></button>
         <router-outlet></router-outlet>
     </div>
     <div class="fixed-plugin">

@@ -16,7 +16,7 @@ export const ROUTES: RouteInfo[] = [
     class: '',
   },
   {
-    path: '/typography',
+    path: '/purchase-orders',
     title: 'Nhập hàng',
     icon: 'add_shopping_cart',
     class: '',
@@ -32,8 +32,6 @@ export const ROUTES: RouteInfo[] = [
 })
 export class SidebarComponent implements OnInit {
   menuItems: any[];
-
-  @Input() visibleSidebar: boolean;
 
   constructor() {}
 

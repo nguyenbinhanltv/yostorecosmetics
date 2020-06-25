@@ -16,9 +16,12 @@ import { MessageModule } from 'primeng/message';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { ProductsComponent } from 'app/pages/products/products.component';
-import { CreateComponent } from 'app/pages/products/create/create.component';
+import { CreateComponent as ProductsCreateComponent } from 'app/pages/products/create/create.component';
+import { CreateComponent as PurchaseOrdersCreateComponent } from 'app/pages/purchase-orders/create/create.component';
 import { MessageService } from 'primeng/api';
+import { TableModule } from 'primeng/table';
 import { VariantsComponent } from 'app/pages/variants/variants.component';
+import { PurchaseOrdersComponent } from 'app/pages/purchase-orders/purchase-orders.component';
 
 @NgModule({
   imports: [
@@ -37,12 +40,15 @@ import { VariantsComponent } from 'app/pages/variants/variants.component';
     ToastModule,
     MessageModule,
     PanelModule,
-    InputNumberModule
+    InputNumberModule,
+    TableModule
   ],
   declarations: [
     ProductsComponent,
-    CreateComponent,
-    VariantsComponent
+    ProductsCreateComponent,
+    VariantsComponent,
+    PurchaseOrdersComponent,
+    PurchaseOrdersCreateComponent
   ],
   providers: [MessageService]
 })

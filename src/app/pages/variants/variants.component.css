@@ -66,3 +66,11 @@ p {
   justify-content: space-between;
   align-items: center;
 }
+
+.container-fluid {
+  margin-top: 20vh;
+}
+
+h5 {
+  margin: 0 auto !important;
+}

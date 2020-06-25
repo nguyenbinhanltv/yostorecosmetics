@@ -2,38 +2,44 @@
     <div class="ui-toolbar-group-left">
         <div>
             <p>
-                Sản phẩm
+                Đơn nhập hàng
             </p>
         </div>
-        <button pButton type="button" label="Thêm sản phẩm mới" routerLink="create"
+        <button pButton type="button" label="Tạo đơn nhập hàng" routerLink="create"
             class="ui-button-raised"></button>
     </div>
     <div class="container-fluid">
         <p-table #dt [value]="cars" [paginator]="true" [rows]="10">
             <ng-template pTemplate="caption">
                 <div style="text-align: right">
-                    <h5 style="text-align: left;">Tất cả sản phẩm</h5>
+                    <h5 style="text-align: left;">Tất cả đơn nhập hàng</h5>
                     <i class="pi pi-search" style="margin: 5px 5px 0 0"></i>
-                    <input type="text" pInputText size="50" placeholder="Tìm kiếm sản phẩm"
+                    <input type="text" pInputText size="50" placeholder="Tìm kiếm đơn nhập hàng"
                         (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
                 </div>
             </ng-template>
             <ng-template pTemplate="header">
                 <tr>
                     <th>
-                        <h5>Sản phẩm</h5>
+                        <h5>Mã đơn</h5>
                     </th>
                     <th>
-                        <h5>Loại</h5>
+                        <h5>Tên nhà cung cấp</h5>
                     </th>
                     <th>
-                        <h5>Nhãn hiệu</h5>
+                        <h5>Trạng thái</h5>
                     </th>
                     <th>
-                        <h5>Có thể bán</h5>
+                        <h5>Thanh toán</h5>
                     </th>
                     <th>
-                        <h5>Ngày khởi tạo</h5>
+                        <h5>Nhập kho</h5>
+                    </th>
+                    <th>
+                        <h5>Tổng tiền</h5>
+                    </th>
+                    <th>
+                        <h5>Nhân viên tạo</h5>
                     </th>
                 </tr>
             </ng-template>

@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./variants.component.css']
 })
 export class VariantsComponent implements OnInit {
+  cars = [];
 
   constructor() { }
 

@@ -1,13 +1,49 @@
 <div class="main-content">
 
   <div class="ui-toolbar-group-left">
-      <div>
-        <button pButton type="button" label="Sản phẩm" icon="pi pi-chevron-left" routerLink="/products" class="ui-button-secondary"></button>
-        <p>
-          Quản lý kho
-        </p>
-      </div>
-      <button pButton type="button" label="Xem sản phẩm" routerLink="/products" class="ui-button-raised"></button>
+    <div>
+      <button pButton type="button" label="Sản phẩm" icon="pi pi-chevron-left" routerLink="/products"
+        class="ui-button-secondary"></button>
+      <p>
+        Quản lý kho
+      </p>
+    </div>
+    <button pButton type="button" label="Xem sản phẩm" routerLink="/products" class="ui-button-raised"></button>
+  </div>
+
+  <div class="container-fluid">
+    <p-table #dt [value]="cars" [paginator]="true" [rows]="10">
+      <ng-template pTemplate="caption">
+        <div style="text-align: right">
+          <h5 style="text-align: left;">Tất cả phiên bản sản phẩm</h5>
+          <i class="pi pi-search" style="margin: 5px 5px 0 0"></i>
+          <input type="text" pInputText size="50" placeholder="Tìm kiếm phiên bản sản phẩm"
+            (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th>
+            <h5>Sản phẩm</h5>
+          </th>
+          <th>
+            <h5>Mã SKU</h5>
+          </th>
+          <th>
+            <h5>Loại sản phẩm</h5>
+          </th>
+          <th>
+            <h5>Nhãn hiệu</h5>
+          </th>
+          <th>
+            <h5>Có thể bán</h5>
+          </th>
+          <th>
+            <h5>Tồn kho</h5>
+          </th>
+        </tr>
+      </ng-template>
+    </p-table>
   </div>
 
 </div>
