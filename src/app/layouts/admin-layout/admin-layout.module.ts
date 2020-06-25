@@ -22,6 +22,8 @@ import { MessageService } from 'primeng/api';
 import { TableModule } from 'primeng/table';
 import { VariantsComponent } from 'app/pages/variants/variants.component';
 import { PurchaseOrdersComponent } from 'app/pages/purchase-orders/purchase-orders.component';
+import { LoginComponent } from 'app/pages/login/login.component';
+
 
 @NgModule({
   imports: [
@@ -41,14 +43,15 @@ import { PurchaseOrdersComponent } from 'app/pages/purchase-orders/purchase-orde
     MessageModule,
     PanelModule,
     InputNumberModule,
-    TableModule
+    TableModule,
   ],
   declarations: [
     ProductsComponent,
     ProductsCreateComponent,
     VariantsComponent,
     PurchaseOrdersComponent,
-    PurchaseOrdersCreateComponent
+    PurchaseOrdersCreateComponent,
+    LoginComponent
   ],
   providers: [MessageService]
 })
