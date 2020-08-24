@@ -30,18 +30,17 @@ export class CreateComponent implements OnInit {
 
   ngOnInit() {
     this.productFrom = this.fb.group({
-      productname: new FormControl('', Validators.required),
-      productid: new FormControl('', Validators.required),
-      barcode: new FormControl('', Validators.required),
-      productretailprices: new FormControl('', Validators.required),
-      productwholesaleprices: new FormControl('', Validators.required),
-      productentryprices: new FormControl('', Validators.required),
-      mass: new FormControl('', Validators.required),
-      unit: new FormControl('', Validators.required),
-      producttype: new FormControl('', Validators.required),
-      brand: new FormControl('', Validators.required),
+      productName: new FormControl('', Validators.required),
+      productId: new FormControl('', Validators.required),
+      productBarcode: new FormControl('', Validators.required),
+      productRetailPrice: new FormControl('', Validators.required),
+      productWholesalePrice: new FormControl('', Validators.required),
+      productStockPrice: new FormControl('', Validators.required),
+      productType: new FormControl('', Validators.required),
+      productMark: new FormControl('', Validators.required),
+      productWeight: new FormControl('', Validators.required),
+      productUnit: new FormControl('', Validators.required),
     });
-
   }
 
   onSubmit(value: string) {
@@ -54,7 +53,5 @@ export class CreateComponent implements OnInit {
     console.log(this.productFrom);
   }
 
-  calPrices() {
-
-  }
+  calPrices() {}
 }
