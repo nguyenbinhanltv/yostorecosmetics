@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { SelectItem } from 'primeng/api';
 import { MessageService } from 'primeng/api';
-import { map } from 'jquery';
+import { ProductsListService } from 'app/services/products-list.service';
 
 @Component({
   selector: 'app-create',
@@ -25,7 +25,8 @@ export class CreateComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private productsService: ProductsListService
   ) {}
 
   ngOnInit() {
@@ -43,14 +44,15 @@ export class CreateComponent implements OnInit {
     });
   }
 
-  onSubmit(value: string) {
+  onSubmit(data: any) {
     this.submitted = true;
+    console.log(this.productFrom.value);
+    this.productsService.createProduct(this.productFrom.value).subscribe();
     this.messageService.add({
       severity: 'success',
       summary: 'OK',
       detail: 'Lưu thông tin sản phẩm thành công.',
     });
-    console.log(this.productFrom);
   }
 
   calPrices() {}

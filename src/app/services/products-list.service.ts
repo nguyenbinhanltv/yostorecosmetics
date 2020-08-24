@@ -9,7 +9,7 @@ import { Product } from 'app/models/products.model';
 export class ProductsListService {
 
   constructor(
-    private http: HttpClient
+    public http: HttpClient
   ) { }
 
   getProducts() {
@@ -17,6 +17,6 @@ export class ProductsListService {
   }
 
   createProduct(product: any) {
-    return this.http.post<Product>(environment.apiEndPoint + 'products', product);
+    return this.http.post<any>(environment.apiEndPoint + 'products', product);
   }
 }
