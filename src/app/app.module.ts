@@ -15,8 +15,7 @@ import {
   AgmCoreModule
 } from '@agm/core';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-import { SidebarModule } from 'primeng/sidebar';
-import { ButtonModule } from 'primeng/button';
+import { PrimengModule } from './primeng/primeng.module';
 
 @NgModule({
   imports: [
@@ -31,8 +30,7 @@ import { ButtonModule } from 'primeng/button';
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
     }),
     AccordionModule,
-    SidebarModule,
-    ButtonModule
+    PrimengModule
   ],
   declarations: [
     AppComponent,
