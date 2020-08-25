@@ -9,4 +9,5 @@ export interface Product {
   productMark: string,
   productWeight: string,
   productUnit: string,
+  productTimeCreated?: string,
 }
