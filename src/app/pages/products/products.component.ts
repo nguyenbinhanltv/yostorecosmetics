@@ -26,12 +26,12 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  hideDialog() {
+  hideDialog(): void {
     this.productDialog = false;
     this.submitted = false;
   }
 
-  saveProduct(product: Product) {
+  saveProduct(product: Product): void {
     this.submitted = true;
 
     if (product.productId) {
@@ -48,12 +48,12 @@ export class ProductsComponent implements OnInit {
     this.product = null;
   }
 
-  editProduct(product: Product) {
+  editProduct(product: Product): void {
     this.product = { ...product };
     this.productDialog = true;
   }
 
-  deleteProduct(product: Product) {
+  deleteProduct(product: Product): void {
     this.confirmationService.confirm({
       message: 'Bạn chắc có muốn xóa sản phẩm ' + product.productName + '?',
       header: 'Cảnh báo',
