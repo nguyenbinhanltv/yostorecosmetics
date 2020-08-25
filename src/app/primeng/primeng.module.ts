@@ -23,6 +23,7 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { RatingModule } from 'primeng/rating';
 import { InputTextModule } from 'primeng/inputtext';
 import { RippleModule } from 'primeng/ripple';
+import { MultiSelectModule } from 'primeng/multiselect';
 
 const primengModule = [
   ToolbarModule,
@@ -40,7 +41,8 @@ const primengModule = [
   FileUploadModule,
   RatingModule,
   InputTextModule,
-  RippleModule
+  RippleModule,
+  MultiSelectModule
 ];
 
 const materialModule = [
