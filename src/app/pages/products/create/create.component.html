@@ -213,7 +213,7 @@
         <div style="display: flex; flex-direction: row-reverse;">
             <button pButton type="reset" label="Hủy" routerLink="/products"
                 class="ui-button-raised ui-button-secondary"></button>
-            <button pButton type="submit" label="Lưu" [disabled]="!productFrom.valid" (click)="onSubmit()"
+            <button pButton type="submit" label="Lưu" [disabled]="!productFrom.valid" (click)="onSubmit(productFrom.value)"
                 class="ui-button-raised"></button>
         </div>
 
