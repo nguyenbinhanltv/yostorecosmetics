@@ -29,7 +29,11 @@ export class CreateComponent implements OnInit {
     private productsService: ProductsListService
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.initProductForm();
+  }
+
+  initProductForm(): void {
     this.productFrom = this.fb.group({
       productName: new FormControl('', Validators.required),
       productId: new FormControl('', Validators.required),
@@ -45,7 +49,7 @@ export class CreateComponent implements OnInit {
     });
   }
 
-  onSubmit(data: any) {
+  onSubmit(data: any): void {
     this.submitted = true;
     this.productsService.createProduct(this.productFrom.value).subscribe();
     this.messageService.add({
@@ -54,6 +58,7 @@ export class CreateComponent implements OnInit {
       detail: 'Lưu thông tin sản phẩm thành công.',
       life: 3000
     });
+    this.initProductForm();
   }
 
   calPrices() {}
