@@ -1,3 +1,5 @@
+import { ProductStatus } from './productStatus';
+
 export interface Product {
   productName: string,
   productId: string,
@@ -10,6 +12,7 @@ export interface Product {
   productWeight: string,
   productUnit: string,
   productTimeCreated?: string,
-  productAmount: number,
-  productOrigin: string
+  productAmount?: number,
+  productOrigin: string,
+  productStatus?: ProductStatus
 }
