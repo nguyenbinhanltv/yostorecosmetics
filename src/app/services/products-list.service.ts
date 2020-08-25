@@ -17,6 +17,10 @@ export class ProductsListService {
     return this.http.get<Product[]>(environment.apiEndPoint + '/products');
   }
 
+  getProduct(productId: string): Observable<Product> {
+    return this.http.get<Product>(environment.apiEndPoint + `/products/${productId}`);
+  }
+
   createProduct(product: Product): Observable<Product> {
     return this.http.post<Product>(environment.apiEndPoint + '/products', product);
   }
