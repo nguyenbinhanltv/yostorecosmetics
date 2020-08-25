@@ -68,7 +68,6 @@ export class CreateComponent implements OnInit {
         value: key
       });
     }
-    console.log(data);
     return data;
   }
 

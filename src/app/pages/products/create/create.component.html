@@ -66,8 +66,9 @@
                                     Xuất xứ *
                                 </div>
                                 <div class="p-field">
-                                    <input id="productOrigin" type="text" aria-describedby="productOrigin-help"
-                                        pInputText formControlName="productOrigin" placeholder="" />
+                                    <p-multiSelect [options]="productOriginOptions" formControlName="productOrigin"
+                                        aria-describedby="productOrigin-help" optionLabel="name">
+                                    </p-multiSelect>
                                     <small id="productOrigin-help" class="p-invalid"
                                         *ngIf="!productFrom.controls['productOrigin'].valid && productFrom.controls['productOrigin'].dirty">Cần
                                         nhập xuất xứ sản phẩm.
@@ -159,8 +160,9 @@
                                     Đơn vị tính *
                                 </div>
                                 <div class="p-field">
-                                    <input id="productUnit" type="text" aria-describedby="productUnit-help" pInputText
-                                        formControlName="productUnit" placeholder="" />
+                                    <p-multiSelect [options]="productUnitOptions" formControlName="productUnit"
+                                        aria-describedby="productUnit-help" optionLabel="name">
+                                    </p-multiSelect>
                                     <small id="productUnit-help" class="p-invalid"
                                         *ngIf="!productFrom.controls['productUnit'].valid && productFrom.controls['productUnit'].dirty">Cần
                                         nhập đơn vị tính sản phẩm.
