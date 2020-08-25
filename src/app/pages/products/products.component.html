@@ -5,38 +5,107 @@
                 Sản phẩm
             </p>
         </div>
-        <button pButton type="button" label="Thêm sản phẩm mới" routerLink="create"
-            class="ui-button-raised"></button>
+        <button pButton pRipple type="button" label="Thêm sản phẩm mới" routerLink="create" class="p-button-text" icon="pi pi-plus"></button>
     </div>
     <div class="container-fluid">
-        <p-table #dt [value]="cars" [paginator]="true" [rows]="10">
+        <p-table #dt [value]="products" [paginator]="true" [rows]="10" [rowHover]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            [showCurrentPageReport]="true" [globalFilterFields]="['productName', 'productType', 'productMark']">
             <ng-template pTemplate="caption">
-                <div style="text-align: right">
-                    <h5 style="text-align: left;">Tất cả sản phẩm</h5>
-                    <i class="pi pi-search" style="margin: 5px 5px 0 0"></i>
-                    <input type="text" pInputText size="50" placeholder="Tìm kiếm sản phẩm"
-                        (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+                <div class="flex-box">
+                    <h5>Tất cả sản phẩm</h5>
+                    <span class="p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input type="text" pInputText size="50" placeholder="Tìm kiếm sản phẩm"
+                            (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+                    </span>
                 </div>
             </ng-template>
             <ng-template pTemplate="header">
                 <tr>
-                    <th>
-                        <h5>Sản phẩm</h5>
+                    <th pSortableColumn="productName">
+                        <h5>Sản phẩm <p-sortIcon field="productName"></p-sortIcon>
+                        </h5>
                     </th>
-                    <th>
-                        <h5>Loại</h5>
+                    <th pSortableColumn="productType">
+                        <h5>Loại <p-sortIcon field="productType"></p-sortIcon>
+                        </h5>
                     </th>
-                    <th>
-                        <h5>Nhãn hiệu</h5>
+                    <th pSortableColumn="productMark">
+                        <h5>Nhãn hiệu <p-sortIcon field="productMark"></p-sortIcon>
+                        </h5>
                     </th>
-                    <th>
-                        <h5>Có thể bán</h5>
+                    <th pSortableColumn="canSale">
+                        <h5>Có thể bán <p-sortIcon field="canSale"></p-sortIcon>
+                        </h5>
                     </th>
-                    <th>
-                        <h5>Ngày khởi tạo</h5>
+                    <th pSortableColumn="createTime">
+                        <h5>Ngày khởi tạo <p-sortIcon field="createTime"></p-sortIcon>
+                        </h5>
                     </th>
                 </tr>
             </ng-template>
+            <ng-template pTemplate="body" let-product>
+                <tr>
+                    <td>{{product.productName}}</td>
+                    <td>{{product.productType}}</td>
+                    <td>{{product.productMark}}</td>
+                    <td>
+                        <span
+                            [class]="'product-badge status-'">{{'True'}}</span>
+                    </td>
+                    <td>{{'Today'}}</td>
+                    <td>
+                        <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2"
+                            (click)="editProduct(product)"></button>
+                        <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"
+                            (click)="deleteProduct(product)"></button>
+                    </td>
+                </tr>
+            </ng-template>
         </p-table>
+
+        <p-dialog [(visible)]="productDialog" [style]="{width: '50vw'}" header="Product Details" [modal]="true" styleClass="p-fluid">
+            <ng-template pTemplate="content">
+                <!-- <img [src]="'assets/showcase/images/demo/product/' + product.image" [alt]="product.image" class="product-image" *ngIf="product.image"> -->
+                <div class="p-field">
+                    <label for="name">Tên sản phẩm</label>
+                    <input type="text" pInputText id="productName" [(ngModel)]="product.productName" required autofocus />
+                    <small class="p-invalid" *ngIf="submitted && !product.productName">Yêu cầu nhập tên sản phẩm.</small>
+                </div>
+                <div class="p-field">
+                    <label for="name">Tên sản phẩm</label>
+                    <input type="text" pInputText id="productType" [(ngModel)]="product.productType" required autofocus />
+                    <small class="p-invalid" *ngIf="submitted && !product.productType">Yêu cầu nhập loại sản phẩm.</small>
+                </div>
+                <div class="p-field">
+                    <label for="name">Tên sản phẩm</label>
+                    <input type="text" pInputText id="productMark" [(ngModel)]="product.productMark" required autofocus />
+                    <small class="p-invalid" *ngIf="submitted && !product.productMark">Yêu cầu nhập nhãn hiệu sản phẩm.</small>
+                </div>
+        
+                <div class="p-formgrid p-grid">
+                    <div class="p-field p-col">
+                        <label for="productWholesalePrice">Giá bán lẻ</label>
+                        <p-inputNumber id="productRetailPrice" [(ngModel)]="product.productRetailPrice" mode="currency" currency="USD" locale="en-US"></p-inputNumber>
+                    </div>
+                    <div class="p-field p-col">
+                        <label for="productWholesalePrice">Giá bán buôn</label>
+                        <p-inputNumber id="productWholesalePrice" [(ngModel)]="product.productWholesalePrice" mode="currency" currency="USD" locale="en-US"></p-inputNumber>
+                    </div>
+                    <div class="p-field p-col">
+                        <label for="productStockPrice">Giá nhập</label>
+                        <p-inputNumber id="productStockPrice" [(ngModel)]="product.productStockPrice" mode="currency" currency="USD" locale="en-US"></p-inputNumber>
+                    </div>
+                </div>
+            </ng-template>
+            
+            <ng-template pTemplate="footer">
+                <button pButton pRipple label="Hủy" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+                <button pButton pRipple label="Lưu" icon="pi pi-check" class="p-button-text" (click)="saveProduct(product)"></button>
+            </ng-template>
+        </p-dialog>
+
+        <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
     </div>
 </div>

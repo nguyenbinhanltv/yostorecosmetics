@@ -29,3 +29,10 @@ h5 {
 .container-fluid {
     margin-top: 5vh;
 }
+
+.flex-box {
+    text-align: right;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

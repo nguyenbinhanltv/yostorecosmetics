@@ -7,7 +7,7 @@ import { AdminLayoutRoutes, AdminLayoutRoutingModule } from './admin-layout.rout
 import { ProductsComponent } from 'app/pages/products/products.component';
 import { CreateComponent as ProductsCreateComponent } from 'app/pages/products/create/create.component';
 import { CreateComponent as PurchaseOrdersCreateComponent } from 'app/pages/purchase-orders/create/create.component';
-import { MessageService } from 'primeng/api';
+import { MessageService, ConfirmationService } from 'primeng/api';
 import { VariantsComponent } from 'app/pages/variants/variants.component';
 import { PurchaseOrdersComponent } from 'app/pages/purchase-orders/purchase-orders.component';
 import { LoginComponent } from 'app/pages/login/login.component';
@@ -31,7 +31,10 @@ import { PrimengModule } from 'app/primeng/primeng.module';
     PurchaseOrdersCreateComponent,
     LoginComponent
   ],
-  providers: [MessageService]
+  providers: [
+    MessageService,
+    ConfirmationService
+  ]
 })
 
 export class AdminLayoutModule {}

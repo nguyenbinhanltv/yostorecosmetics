@@ -5,17 +5,20 @@
                 Đơn nhập hàng
             </p>
         </div>
-        <button pButton type="button" label="Tạo đơn nhập hàng" routerLink="create"
-            class="ui-button-raised"></button>
+        <button pButton type="button" label="Tạo đơn nhập hàng" routerLink="create" class="p-button-text" icon="pi pi-plus"></button>
     </div>
     <div class="container-fluid">
-        <p-table #dt [value]="cars" [paginator]="true" [rows]="10">
+        <p-table #dt [value]="cars" [paginator]="true" [rows]="10" [rowHover]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            [showCurrentPageReport]="true" [globalFilterFields]="[]">
             <ng-template pTemplate="caption">
-                <div style="text-align: right">
-                    <h5 style="text-align: left;">Tất cả đơn nhập hàng</h5>
-                    <i class="pi pi-search" style="margin: 5px 5px 0 0"></i>
-                    <input type="text" pInputText size="50" placeholder="Tìm kiếm đơn nhập hàng"
-                        (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+                <div class="flex-box">
+                    <h5>Tất cả đơn nhập hàng</h5>
+                    <span class="p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input type="text" pInputText size="50" placeholder="Tìm kiếm đơn nhập hàng"
+                            (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+                    </span>
                 </div>
             </ng-template>
             <ng-template pTemplate="header">

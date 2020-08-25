@@ -33,7 +33,7 @@ export class CreateComponent implements OnInit {
     this.productFrom = this.fb.group({
       productName: new FormControl('', Validators.required),
       productId: new FormControl('', Validators.required),
-      productBarcode: new FormControl('', Validators.required),
+      productBarCode: new FormControl('', Validators.required),
       productRetailPrice: new FormControl('', Validators.required),
       productWholesalePrice: new FormControl('', Validators.required),
       productStockPrice: new FormControl('', Validators.required),
@@ -46,7 +46,6 @@ export class CreateComponent implements OnInit {
 
   onSubmit(data: any) {
     this.submitted = true;
-    console.log(this.productFrom.value);
     this.productsService.createProduct(this.productFrom.value).subscribe();
     this.messageService.add({
       severity: 'success',

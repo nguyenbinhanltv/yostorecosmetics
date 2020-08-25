@@ -16,6 +16,13 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { TableModule } from 'primeng/table';
 import { SidebarModule } from 'primeng/sidebar';
 import { ButtonModule } from 'primeng/button';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { DialogModule } from 'primeng/dialog';
+import { FileUploadModule } from 'primeng/fileupload';
+import { RatingModule } from 'primeng/rating';
+import { InputTextModule } from 'primeng/inputtext';
+import { RippleModule } from 'primeng/ripple';
 
 const primengModule = [
   ToolbarModule,
@@ -26,7 +33,14 @@ const primengModule = [
   InputNumberModule,
   TableModule,
   SidebarModule,
-  ButtonModule
+  ButtonModule,
+  ConfirmDialogModule,
+  RadioButtonModule,
+  DialogModule,
+  FileUploadModule,
+  RatingModule,
+  InputTextModule,
+  RippleModule
 ];
 
 const materialModule = [

@@ -13,10 +13,18 @@ export class ProductsListService {
   ) { }
 
   getProducts() {
-    return this.http.get<Product[]>(environment.apiEndPoint + 'products');
+    return this.http.get<Product[]>(environment.apiEndPoint + '/products');
   }
 
-  createProduct(product: any) {
-    return this.http.post<any>(environment.apiEndPoint + 'products', product);
+  createProduct(product: Product) {
+    return this.http.post<Product>(environment.apiEndPoint + '/products', product);
+  }
+
+  updateProduct(productId: string, product: Product) {
+    return this.http.patch<Product>(environment.apiEndPoint + `/products/${productId}`, product);
+  }
+
+  deleteProduct(productId: string) {
+    return this.http.delete<Product>(environment.apiEndPoint + `/products/${productId}`);
   }
 }
