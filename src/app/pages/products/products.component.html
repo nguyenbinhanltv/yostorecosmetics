@@ -36,12 +36,21 @@
                         <h5>Nhãn hiệu <p-sortIcon field="productMark"></p-sortIcon>
                         </h5>
                     </th>
+                    <th pSortableColumn="productOrigin">
+                        <h5>Xuất xứ <p-sortIcon field="productOrigin"></p-sortIcon>
+                        </h5>
+                    </th>
                     <th pSortableColumn="canSale">
                         <h5>Có thể bán <p-sortIcon field="canSale"></p-sortIcon>
                         </h5>
                     </th>
-                    <th pSortableColumn="createTime">
-                        <h5>Ngày khởi tạo <p-sortIcon field="createTime"></p-sortIcon>
+                    <th pSortableColumn="productTimeCreated">
+                        <h5>Ngày khởi tạo <p-sortIcon field="productTimeCreated"></p-sortIcon>
+                        </h5>
+                    </th>
+                    <th>
+                        <h5>
+                            Edit
                         </h5>
                     </th>
                 </tr>
@@ -51,6 +60,7 @@
                     <td>{{product.productName}}</td>
                     <td>{{product.productType}}</td>
                     <td>{{product.productMark}}</td>
+                    <td>{{product.productOrigin}}</td>
                     <td>
                         <span
                             [class]="'product-badge status-'">{{'True'}}</span>

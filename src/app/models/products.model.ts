@@ -10,4 +10,5 @@ export interface Product {
   productWeight: string,
   productUnit: string,
   productTimeCreated?: string,
+  productOrigin: string
 }

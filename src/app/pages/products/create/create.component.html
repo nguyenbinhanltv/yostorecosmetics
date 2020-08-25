@@ -1,7 +1,9 @@
 <div class="main-content">
 
     <div class="ui-toolbar-group-left">
-        <button pButton type="button" label="Quay lại danh sách sản phẩm" icon="pi pi-chevron-left" routerLink="/products" class="p-button-text"></button>
+        <button pButton type="button" label="Quay lại danh sách sản phẩm" icon="pi pi-chevron-left"
+            routerLink="/products" class="p-button-text">
+        </button>
         <div>
             <p>
                 Thêm mới sản phẩm
@@ -21,26 +23,56 @@
                     <p-panel header="Sản phẩm" class="panel-left">
                         <div class="p-fluid forms-grid" style="margin: 1em 0">
                             <div>
-                                <div>Tên sản phẩm *</div>
-                                <input pInputText type="text" formControlName="productName"
-                                    placeholder="Nhập tên sản phẩm" />
-                                <p-message severity="error" text="Cần nhập tên sản phẩm"
-                                    *ngIf="!productFrom.controls['productName'].valid && productFrom.controls['productName'].dirty">
-                                </p-message>
+                                <div>
+                                    Tên sản phẩm *
+                                </div>
+                                <div class="p-field">
+                                    <input id="productName" type="text" aria-describedby="productName-help" pInputText
+                                        formControlName="productName" placeholder="Nhập tên sản phẩm" />
+                                    <small id="productName-help" class="p-invalid"
+                                        *ngIf="!productFrom.controls['productName'].valid && productFrom.controls['productName'].dirty">
+                                        Cầnnhập tên sản phẩm.
+                                    </small>
+                                </div>
                             </div>
                             <div>
-                                <div>Mã sản phẩm / SKU *</div>
-                                <input pInputText type="text" formControlName="productId" placeholder="" />
-                                <p-message severity="error" text="Cần nhập mã sản phẩm"
-                                    *ngIf="!productFrom.controls['productId'].valid && productFrom.controls['productId'].dirty">
-                                </p-message>
+                                <div>
+                                    Mã sản phẩm / SKU *
+                                </div>
+                                <div class="p-field">
+                                    <input id="productId" type="text" aria-describedby="productId-help" pInputText
+                                        formControlName="productId" placeholder="Có thể nhập bất kì, sẽ tự tạo lại" />
+                                    <small id="productId-help" class="p-invalid"
+                                        *ngIf="!productFrom.controls['productId'].valid && productFrom.controls['productId'].dirty">Cần
+                                        nhập mã sản phẩm.
+                                    </small>
+                                </div>
                             </div>
                             <div>
-                                <div>Barcode *</div>
-                                <input pInputText type="text" formControlName="productBarCode" placeholder="" />
-                                <p-message severity="error" text="cần nhập barcode sản phẩm"
-                                    *ngIf="!productFrom.controls['productBarCode'].valid && productFrom.controls['productBarCode'].dirty">
-                                </p-message>
+                                <div>
+                                    Barcode *
+                                </div>
+                                <div class="p-field">
+                                    <input id="productBarCode" type="text" aria-describedby="productBarCode-help"
+                                        pInputText formControlName="productBarCode" placeholder="" />
+                                    <small id="productBarCode-help" class="p-invalid"
+                                        *ngIf="!productFrom.controls['productBarCode'].valid && productFrom.controls['productBarCode'].dirty">Cần
+                                        nhập barcode.
+                                    </small>
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    Xuất xứ *
+                                </div>
+                                <div class="p-field">
+                                    <input id="productOrigin" type="text" aria-describedby="productOrigin-help"
+                                        pInputText formControlName="productOrigin" placeholder="" />
+                                    <small id="productOrigin-help" class="p-invalid"
+                                        *ngIf="!productFrom.controls['productOrigin'].valid && productFrom.controls['productOrigin'].dirty">Cần
+                                        nhập xuất xứ sản phẩm.
+                                    </small>
+                                </div>
                             </div>
                         </div>
                     </p-panel>
@@ -48,34 +80,59 @@
                     <p-panel header="Giá sản phẩm" class="panel-right">
                         <div class="p-fluid forms-grid" style="margin: 1em 0">
                             <div>
-                                <div>Giá bán lẻ *</div>
-                                <p-inputNumber formControlName="productRetailPrice" [showButtons]="false"
-                                    buttonLayout="horizontal" spinnerMode="horizontal" mode="currency" currency="VND">
-                                </p-inputNumber>
-                                <p-message severity="error" text="Cần nhập giá bán lẻ sản phẩm"
-                                    *ngIf="!productFrom.controls['productRetailPrice'].valid && productFrom.controls['productRetailPrice'].dirty">
-                                </p-message>
+                                <div>
+                                    Giá bán lẻ *
+                                </div>
+                                <div class="p-field">
+                                    <p-inputNumber id="productRetailPrice" aria-describedby="productRetailPrice-help"
+                                        formControlName="productRetailPrice" [showButtons]="false"
+                                        buttonLayout="horizontal" spinnerMode="horizontal" mode="currency"
+                                        currency="VND">
+                                    </p-inputNumber>
+                                    <small id="productRetailPrice-help" class="p-invalid"
+                                        *ngIf="!productFrom.controls['productRetailPrice'].valid && productFrom.controls['productRetailPrice'].dirty">Cần
+                                        nhập giá bán lẻ sản phẩm.
+                                    </small>
+                                </div>
                             </div>
                             <div>
-                                <div>Giá bán buôn *</div>
-                                <p-inputNumber formControlName="productWholesalePrice" [showButtons]="false"
-                                    buttonLayout="horizontal" spinnerMode="horizontal" mode="currency" currency="VND">
-                                </p-inputNumber>
-                                <p-message severity="error" text="Cần nhập giá buôn sản phẩm"
-                                    *ngIf="!productFrom.controls['productWholesalePrice'].valid && productFrom.controls['productWholesalePrice'].dirty">
-                                </p-message>
+                                <div>
+                                    Giá bán buôn *
+                                </div>
+                                <div class="p-field">
+                                    <p-inputNumber id="productWholesalePrice"
+                                        aria-describedby="productWholesalePrice-help"
+                                        formControlName="productWholesalePrice" [showButtons]="false"
+                                        buttonLayout="horizontal" spinnerMode="horizontal" mode="currency"
+                                        currency="VND">
+                                    </p-inputNumber>
+                                    <small id="productWholesalePrice-help" class="p-invalid"
+                                        *ngIf="!productFrom.controls['productWholesalePrice'].valid && productFrom.controls['productWholesalePrice'].dirty">Cần
+                                        nhập giá bán buôn sản phẩm.
+                                    </small>
+                                </div>
                             </div>
                             <div>
-                                <div>Giá nhập *</div>
-                                <p-inputNumber formControlName="productStockPrice" [showButtons]="false"
-                                    buttonLayout="horizontal" spinnerMode="horizontal" mode="currency" currency="VND">
-                                </p-inputNumber>
-                                <p-message severity="error" text="Cần nhập giá nhập vào kho của sản phẩm"
-                                    *ngIf="!productFrom.controls['productStockPrice'].valid && productFrom.controls['productStockPrice'].dirty">
-                                </p-message>
+                                <div>
+                                    Giá nhập *
+                                </div>
+                                <div class="p-field">
+                                    <p-inputNumber id="productStockPrice" aria-describedby="productStockPrice-help"
+                                        formControlName="productStockPrice" [showButtons]="false"
+                                        buttonLayout="horizontal" spinnerMode="horizontal" mode="currency"
+                                        currency="VND">
+                                    </p-inputNumber>
+                                    <small id="productStockPrice-help" class="p-invalid"
+                                        *ngIf="!productFrom.controls['productStockPrice'].valid && productFrom.controls['productStockPrice'].dirty">Cần
+                                        nhập giá nhập kho sản phẩm.
+                                    </small>
+                                </div>
                             </div>
                             <div style="display: flex; align-items: center; justify-content: center;">
-                                <button pButton type="button" label="Tính giá" [disabled]="!productFrom.controls['productStockPrice'].valid" (click)="calPrices()" class="ui-button-raised"></button>
+                                <button pButton type="button" label="Tính giá"
+                                    [disabled]="!productFrom.controls['productStockPrice'].valid" (click)="calPrices()"
+                                    class="ui-button-raised" style="width: 50%;">
+                                </button>
                             </div>
                         </div>
                     </p-panel>
@@ -85,18 +142,30 @@
                     <p-panel header="Kho hàng" class="panel-left">
                         <div class="p-fluid forms-grid" style="margin: 1em 0">
                             <div>
-                                <div>Khối lượng *</div>
-                                <input pInputText type="text" formControlName="productWeight" placeholder="g hoặc kg" />
-                                <p-message severity="error" text="Cần nhập khối lượng mỗi sản phẩm"
-                                    *ngIf="!productFrom.controls['productWeight'].valid && productFrom.controls['productWeight'].dirty">
-                                </p-message>
+                                <div>
+                                    Khối lượng *
+                                </div>
+                                <div class="p-field">
+                                    <input id="productWeight" type="text" aria-describedby="productWeight-help"
+                                        pInputText formControlName="productWeight" placeholder="" />
+                                    <small id="productWeight-help" class="p-invalid"
+                                        *ngIf="!productFrom.controls['productWeight'].valid && productFrom.controls['productWeight'].dirty">Cần
+                                        nhập khối lượng sản phẩm.
+                                    </small>
+                                </div>
                             </div>
                             <div>
-                                <div>Đơn vị tính *</div>
-                                <input pInputText type="text" formControlName="productUnit" />
-                                <p-message severity="error" text="Cần nhập đơn vị sản phẩm"
-                                    *ngIf="!productFrom.controls['productUnit'].valid && productFrom.controls['productUnit'].dirty">
-                                </p-message>
+                                <div>
+                                    Đơn vị tính *
+                                </div>
+                                <div class="p-field">
+                                    <input id="productUnit" type="text" aria-describedby="productUnit-help" pInputText
+                                        formControlName="productUnit" placeholder="" />
+                                    <small id="productUnit-help" class="p-invalid"
+                                        *ngIf="!productFrom.controls['productUnit'].valid && productFrom.controls['productUnit'].dirty">Cần
+                                        nhập đơn vị tính sản phẩm.
+                                    </small>
+                                </div>
                             </div>
                         </div>
                     </p-panel>
@@ -104,20 +173,30 @@
                     <p-panel header="Phân loại" class="panel-right">
                         <div class="p-fluid forms-grid" style="margin: 1em 0">
                             <div>
-                                <div>Loại sản phẩm *</div>
-                                <input pInputText type="" formControlName="productType"
-                                    placeholder="Nhập loại sản phẩm" />
-                                <p-message severity="error" text="Cần nhập loại sản phẩm"
-                                    *ngIf="!productFrom.controls['productType'].valid && productFrom.controls['productType'].dirty">
-                                </p-message>
+                                <div>
+                                    Loại sản phẩm *
+                                </div>
+                                <div class="p-field">
+                                    <input id="productType" type="text" aria-describedby="productType-help" pInputText
+                                        formControlName="productType" placeholder="" />
+                                    <small id="productType-help" class="p-invalid"
+                                        *ngIf="!productFrom.controls['productType'].valid && productFrom.controls['productType'].dirty">Cần
+                                        nhập loại sản phẩm.
+                                    </small>
+                                </div>
                             </div>
                             <div>
-                                <div>Nhãn hiệu *</div>
-                                <input pInputText type="text" formControlName="productMark"
-                                    placeholder="Nhập nhãn hiệu sản phẩm" />
-                                <p-message severity="error" text="Cần nhập nhãn hiệu sản phẩm"
-                                    *ngIf="!productFrom.controls['productMark'].valid && productFrom.controls['productMark'].dirty">
-                                </p-message>
+                                <div>
+                                    Nhãn hiệu *
+                                </div>
+                                <div class="p-field">
+                                    <input id="productMark" type="text" aria-describedby="productMark-help" pInputText
+                                        formControlName="productMark" placeholder="" />
+                                    <small id="productMark-help" class="p-invalid"
+                                        *ngIf="!productFrom.controls['productMark'].valid && productFrom.controls['productMark'].dirty">Cần
+                                        nhập nhãn hiệu sản phẩm.
+                                    </small>
+                                </div>
                             </div>
                         </div>
                     </p-panel>
@@ -127,8 +206,10 @@
         </div>
 
         <div style="display: flex; flex-direction: row-reverse;">
-            <button pButton type="reset" label="Hủy" routerLink="/products" class="ui-button-raised ui-button-secondary"></button>
-            <button pButton type="submit" label="Lưu" [disabled]="!productFrom.valid" (click)="onSubmit()" class="ui-button-raised"></button>
+            <button pButton type="reset" label="Hủy" routerLink="/products"
+                class="ui-button-raised ui-button-secondary"></button>
+            <button pButton type="submit" label="Lưu" [disabled]="!productFrom.valid" (click)="onSubmit()"
+                class="ui-button-raised"></button>
         </div>
 
     </div>

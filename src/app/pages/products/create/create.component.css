@@ -58,3 +58,7 @@ p {
 p {
     margin: 20px;
 }
+
+.p-field {
+    width: 100%;
+}

@@ -41,6 +41,7 @@ export class CreateComponent implements OnInit {
       productMark: new FormControl('', Validators.required),
       productWeight: new FormControl('', Validators.required),
       productUnit: new FormControl('', Validators.required),
+      productOrigin: new FormControl('', Validators.required),
     });
   }
 
