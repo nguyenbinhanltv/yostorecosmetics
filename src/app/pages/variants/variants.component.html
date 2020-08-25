@@ -66,7 +66,9 @@
           <td>{{product.productType}}</td>
           <td>{{product.productMark}}</td>
           <td>
-            <span [class]="'product-badge status-'">{{'True'}}</span>
+            <span class="p-tag p-tag-success" *ngIf="product.productStatus == 'INSTOCK'" >{{product.productStatus}}</span>
+            <span class="p-tag p-tag-warning" *ngIf="product.productStatus == 'LOWSTOCK'" >{{product.productStatus}}</span>
+            <span class="p-tag p-tag-danger" *ngIf="product.productStatus == 'OUTOFSTOCK'" >{{product.productStatus}}</span>
           </td>
           <td>{{product?.productAmount}}</td>
         </tr>
