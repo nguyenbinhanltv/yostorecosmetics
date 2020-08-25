@@ -11,7 +11,7 @@
         <p-toast [style]="{marginTop: '10px'}"></p-toast>
         <p-table #dt [(value)]="products" [paginator]="true" [rows]="10" [rowHover]="true"
             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-            [showCurrentPageReport]="true" [globalFilterFields]="['productName', 'productType', 'productMark']">
+            [showCurrentPageReport]="true" [globalFilterFields]="['productName', 'productType', 'productMark', 'productOrigin', 'productTimeCreated']">
             <ng-template pTemplate="caption">
                 <div class="flex-box">
                     <h5>Tất cả sản phẩm</h5>

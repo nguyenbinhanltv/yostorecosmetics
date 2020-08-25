@@ -12,7 +12,9 @@
   </div>
 
   <div class="container-fluid">
-    <p-table #dt [value]="cars" [paginator]="true" [rows]="10">
+    <p-table #dt [(value)]="products" [paginator]="true" [rows]="10" [rowHover]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true"
+      [globalFilterFields]="['productId', 'productName', 'productType', 'productMark', 'productAmount']">
       <ng-template pTemplate="caption">
         <div style="text-align: right">
           <h5 style="text-align: left;">Tất cả phiên bản sản phẩm</h5>
@@ -25,23 +27,35 @@
       </ng-template>
       <ng-template pTemplate="header">
         <tr>
-          <th>
-            <h5>Sản phẩm</h5>
+          <th pSortableColumn="productId">
+            <h5>
+              Mã sản phẩm / SKU <p-sortIcon field="productId"></p-sortIcon>
+            </h5>
           </th>
-          <th>
-            <h5>Mã SKU</h5>
+          <th pSortableColumn="productName">
+            <h5>
+              Sản phẩm <p-sortIcon field="productName"></p-sortIcon>
+            </h5>
           </th>
-          <th>
-            <h5>Loại sản phẩm</h5>
+          <th pSortableColumn="productType">
+            <h5>
+              Loại sản phẩm <p-sortIcon field="productType"></p-sortIcon>
+            </h5>
           </th>
-          <th>
-            <h5>Nhãn hiệu</h5>
+          <th pSortableColumn="productMark">
+            <h5>
+              Nhãn hiệu <p-sortIcon field="productMark"></p-sortIcon>
+            </h5>
           </th>
-          <th>
-            <h5>Có thể bán</h5>
+          <th pSortableColumn="canSale">
+            <h5>
+              Có thể bán <p-sortIcon field="canSale"></p-sortIcon>
+            </h5>
           </th>
-          <th>
-            <h5>Tồn kho</h5>
+          <th pSortableColumn="productAmount">
+            <h5>
+              Tồn kho <p-sortIcon field="productAmount"></p-sortIcon>
+            </h5>
           </th>
         </tr>
       </ng-template>

@@ -20,10 +20,7 @@ export class ProductsComponent implements OnInit {
     private messageService: MessageService,
     private confirmationService: ConfirmationService
   ) {
-    this.productsService.getProducts().subscribe((data) => {
-      this.products = data;
-      console.log(this.products);
-    });
+    this.productsService.getProducts().subscribe(data => this.products = data);
   }
 
   ngOnInit(): void {
