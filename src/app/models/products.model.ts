@@ -10,5 +10,6 @@ export interface Product {
   productWeight: string,
   productUnit: string,
   productTimeCreated?: string,
+  productAmount: number,
   productOrigin: string
 }
