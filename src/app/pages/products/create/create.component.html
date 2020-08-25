@@ -190,8 +190,11 @@
                                     Nhãn hiệu *
                                 </div>
                                 <div class="p-field">
-                                    <input id="productMark" type="text" aria-describedby="productMark-help" pInputText
-                                        formControlName="productMark" placeholder="" />
+                                    <!-- <input id="productMark" type="text" aria-describedby="productMark-help" pInputText
+                                        formControlName="productMark" placeholder="" /> -->
+                                    <p-multiSelect [options]="productMarkOptions" formControlName="productMark"
+                                        aria-describedby="productMark-help" optionLabel="name">
+                                    </p-multiSelect>
                                     <small id="productMark-help" class="p-invalid"
                                         *ngIf="!productFrom.controls['productMark'].valid && productFrom.controls['productMark'].dirty">Cần
                                         nhập nhãn hiệu sản phẩm.

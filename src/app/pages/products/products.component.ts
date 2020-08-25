@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductsListService } from 'app/services/products-list.service';
 import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
@@ -9,7 +9,7 @@ import { Product } from 'app/models/products.model';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css'],
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent implements OnInit, OnDestroy {
   products: Product[];
   product: Product;
   productDialog: boolean;
@@ -24,6 +24,9 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  ngOnDestroy(): void {
   }
 
   hideDialog(): void {

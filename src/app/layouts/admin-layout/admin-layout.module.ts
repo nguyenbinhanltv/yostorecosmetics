@@ -12,6 +12,8 @@ import { VariantsComponent } from 'app/pages/variants/variants.component';
 import { PurchaseOrdersComponent } from 'app/pages/purchase-orders/purchase-orders.component';
 import { LoginComponent } from 'app/pages/login/login.component';
 import { PrimengModule } from 'app/primeng/primeng.module';
+import { OptionsService } from 'app/services/options.service';
+import { ProductsListService } from 'app/services/products-list.service';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import { PrimengModule } from 'app/primeng/primeng.module';
   ],
   providers: [
     MessageService,
-    ConfirmationService
+    ConfirmationService,
+    OptionsService,
+    ProductsListService
   ]
 })
 

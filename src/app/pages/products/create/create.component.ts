@@ -8,6 +8,7 @@ import {
 import { SelectItem } from 'primeng/api';
 import { MessageService } from 'primeng/api';
 import { ProductsListService } from 'app/services/products-list.service';
+import { OptionsService } from 'app/services/options.service';
 
 @Component({
   selector: 'app-create',
@@ -23,11 +24,21 @@ export class CreateComponent implements OnInit {
 
   description: string;
 
+  // options
+  productMarkOptions: object;
+  productOriginOptions: object;
+  productUnitOptions: object;
+
   constructor(
     private fb: FormBuilder,
     private messageService: MessageService,
-    private productsService: ProductsListService
-  ) {}
+    private productsService: ProductsListService,
+    private optionsService: OptionsService
+  ) {
+    this.optionsService.getOption('productMark').subscribe(data => this.productMarkOptions = this.transformOptions(data));
+    this.optionsService.getOption('productOrigin').subscribe(data => this.productOriginOptions = this.transformOptions(data));
+    this.optionsService.getOption('productUnit').subscribe(data => this.productUnitOptions = this.transformOptions(data));
+  }
 
   ngOnInit(): void {
     this.initProductForm();
@@ -47,6 +58,18 @@ export class CreateComponent implements OnInit {
       productUnit: new FormControl('', Validators.required),
       productOrigin: new FormControl('', Validators.required),
     });
+  }
+
+  transformOptions(options): Array<any> {
+    const data = [];
+    for (const [key, value] of Object.entries(options)) {
+      data.push({
+        name: key,
+        value: key
+      });
+    }
+    console.log(data);
+    return data;
   }
 
   onSubmit(data: any): void {

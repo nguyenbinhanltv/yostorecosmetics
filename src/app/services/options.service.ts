@@ -9,23 +9,23 @@ import { Observable } from 'rxjs';
 export class OptionsService {
 
   constructor(
-    private http: HttpClient
+    public http: HttpClient
   ) { }
 
   getOptions(): Observable<any> {
-    return this.http.get<any>(environment.apiEndPoint + '/options');
+    return this.http.get(environment.apiEndPoint + '/options');
   }
 
   getOption(optionId: string): Observable<any> {
-    return this.http.get<any>(environment.apiEndPoint + `/options/${optionId}`);
+    return this.http.get(environment.apiEndPoint + `/options/${optionId}`);
   }
 
   createOption(option): Observable<any> {
-    return this.http.post<any>(environment.apiEndPoint + '/options', option);
+    return this.http.post(environment.apiEndPoint + '/options', option);
   }
 
   updateOption(optionId: string, option): Observable<any> {
-    return this.http.patch<any>(environment.apiEndPoint + `/options/${optionId}`, option);
+    return this.http.patch(environment.apiEndPoint + `/options/${optionId}`, option);
   }
 
   deleteProduct(optionId: string): Observable<any> {
