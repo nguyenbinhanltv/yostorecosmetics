@@ -36,12 +36,13 @@ export class ProductsComponent implements OnInit {
   saveProduct(product: Product) {
     this.submitted = true;
 
-    // if (product.productId) {
-    //   this.productsService.updateProduct(product.productId, product).subscribe();
-    // }
+    if (product.productId) {
+      this.productsService.updateProduct(product.productId, product).subscribe();
+    }
+
     this.messageService.add({
       severity: 'success',
-      summary: 'Successful',
+      summary: 'OK',
       detail: 'Cật nhật sản phẩm thành công.',
       life: 3000,
     });
@@ -61,14 +62,14 @@ export class ProductsComponent implements OnInit {
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         this.productsService.deleteProduct(product.productId).subscribe();
+        this.messageService.add({
+          severity: 'success',
+          summary: 'OK',
+          detail: 'Đã xóa sản phẩm',
+          life: 3000,
+        });
       }
     });
     this.product = null;
-    this.messageService.add({
-      severity: 'success',
-      summary: 'Successful',
-      detail: 'Đã xóa sản phẩm',
-      life: 3000,
-    });
   }
 }

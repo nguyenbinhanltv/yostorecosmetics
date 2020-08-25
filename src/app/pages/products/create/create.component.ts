@@ -51,6 +51,7 @@ export class CreateComponent implements OnInit {
       severity: 'success',
       summary: 'OK',
       detail: 'Lưu thông tin sản phẩm thành công.',
+      life: 3000
     });
   }
 

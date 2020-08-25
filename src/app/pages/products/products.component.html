@@ -8,7 +8,8 @@
         <button pButton pRipple type="button" label="Thêm sản phẩm mới" routerLink="create" class="p-button-text" icon="pi pi-plus"></button>
     </div>
     <div class="container-fluid">
-        <p-table #dt [value]="products" [paginator]="true" [rows]="10" [rowHover]="true"
+        <p-toast [style]="{marginTop: '10px'}"></p-toast>
+        <p-table #dt [(value)]="products" [paginator]="true" [rows]="10" [rowHover]="true"
             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
             [showCurrentPageReport]="true" [globalFilterFields]="['productName', 'productType', 'productMark']">
             <ng-template pTemplate="caption">
