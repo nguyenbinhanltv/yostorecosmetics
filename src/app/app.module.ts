@@ -17,6 +17,7 @@ import {
 } from '@agm/core';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { PrimengModule } from './primeng/primeng.module';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   imports: [
@@ -37,6 +38,7 @@ import { PrimengModule } from './primeng/primeng.module';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
+    LoginComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

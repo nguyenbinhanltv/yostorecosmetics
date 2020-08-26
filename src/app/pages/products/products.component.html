@@ -5,13 +5,15 @@
                 Sản phẩm
             </p>
         </div>
-        <button pButton pRipple type="button" label="Thêm sản phẩm mới" routerLink="create" class="p-button-text" icon="pi pi-plus"></button>
+        <button pButton pRipple type="button" label="Thêm sản phẩm mới" routerLink="create" class="p-button-text"
+            icon="pi pi-plus"></button>
     </div>
     <div class="container-fluid">
         <p-toast [style]="{marginTop: '10px'}"></p-toast>
         <p-table #dt [(value)]="products" [paginator]="true" [rows]="10" [rowHover]="true"
             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-            [showCurrentPageReport]="true" [globalFilterFields]="['productName', 'productType', 'productMark', 'productOrigin', 'productTimeCreated']">
+            [showCurrentPageReport]="true"
+            [globalFilterFields]="['productName', 'productType', 'productMark', 'productOrigin', 'productTimeCreated']">
             <ng-template pTemplate="caption">
                 <div class="flex-box">
                     <h5>Tất cả sản phẩm</h5>
@@ -62,8 +64,12 @@
                     <td>{{product.productMark}}</td>
                     <td>{{product.productOrigin}}</td>
                     <td>
-                        <span
-                            [class]="'product-badge status-'">{{'True'}}</span>
+                        <span class="p-tag p-tag-success"
+                            *ngIf="product.productStatus == 'INSTOCK'">{{product.productStatus}}</span>
+                        <span class="p-tag p-tag-warning"
+                            *ngIf="product.productStatus == 'LOWSTOCK'">{{product.productStatus}}</span>
+                        <span class="p-tag p-tag-danger"
+                            *ngIf="product.productStatus == 'OUTOFSTOCK'">{{product.productStatus}}</span>
                     </td>
                     <td>{{product?.productTimeCreated}}</td>
                     <td>
@@ -76,44 +82,56 @@
             </ng-template>
         </p-table>
 
-        <p-dialog [(visible)]="productDialog" [style]="{width: '50vw'}" header="Product Details" [modal]="true" styleClass="p-fluid">
+        <p-dialog [(visible)]="productDialog" [style]="{width: '50vw'}" header="Product Details" [modal]="true"
+            styleClass="p-fluid">
             <ng-template pTemplate="content">
                 <!-- <img [src]="'assets/showcase/images/demo/product/' + product.image" [alt]="product.image" class="product-image" *ngIf="product.image"> -->
                 <div class="p-field">
                     <label for="name">Tên sản phẩm</label>
-                    <input type="text" pInputText id="productName" [(ngModel)]="product.productName" required autofocus />
-                    <small class="p-invalid" *ngIf="submitted && !product.productName">Yêu cầu nhập tên sản phẩm.</small>
+                    <input type="text" pInputText id="productName" [(ngModel)]="product.productName" required
+                        autofocus />
+                    <small class="p-invalid" *ngIf="submitted && !product.productName">Yêu cầu nhập tên sản
+                        phẩm.</small>
                 </div>
                 <div class="p-field">
                     <label for="name">Tên sản phẩm</label>
-                    <input type="text" pInputText id="productType" [(ngModel)]="product.productType" required autofocus />
-                    <small class="p-invalid" *ngIf="submitted && !product.productType">Yêu cầu nhập loại sản phẩm.</small>
+                    <input type="text" pInputText id="productType" [(ngModel)]="product.productType" required
+                        autofocus />
+                    <small class="p-invalid" *ngIf="submitted && !product.productType">Yêu cầu nhập loại sản
+                        phẩm.</small>
                 </div>
                 <div class="p-field">
                     <label for="name">Tên sản phẩm</label>
-                    <input type="text" pInputText id="productMark" [(ngModel)]="product.productMark" required autofocus />
-                    <small class="p-invalid" *ngIf="submitted && !product.productMark">Yêu cầu nhập nhãn hiệu sản phẩm.</small>
+                    <input type="text" pInputText id="productMark" [(ngModel)]="product.productMark" required
+                        autofocus />
+                    <small class="p-invalid" *ngIf="submitted && !product.productMark">Yêu cầu nhập nhãn hiệu sản
+                        phẩm.</small>
                 </div>
-        
+
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col">
                         <label for="productWholesalePrice">Giá bán lẻ</label>
-                        <p-inputNumber id="productRetailPrice" [(ngModel)]="product.productRetailPrice" mode="currency" currency="USD" locale="en-US"></p-inputNumber>
+                        <p-inputNumber id="productRetailPrice" [(ngModel)]="product.productRetailPrice" mode="currency"
+                            currency="USD" locale="en-US"></p-inputNumber>
                     </div>
                     <div class="p-field p-col">
                         <label for="productWholesalePrice">Giá bán buôn</label>
-                        <p-inputNumber id="productWholesalePrice" [(ngModel)]="product.productWholesalePrice" mode="currency" currency="USD" locale="en-US"></p-inputNumber>
+                        <p-inputNumber id="productWholesalePrice" [(ngModel)]="product.productWholesalePrice"
+                            mode="currency" currency="USD" locale="en-US"></p-inputNumber>
                     </div>
                     <div class="p-field p-col">
                         <label for="productStockPrice">Giá nhập</label>
-                        <p-inputNumber id="productStockPrice" [(ngModel)]="product.productStockPrice" mode="currency" currency="USD" locale="en-US"></p-inputNumber>
+                        <p-inputNumber id="productStockPrice" [(ngModel)]="product.productStockPrice" mode="currency"
+                            currency="USD" locale="en-US"></p-inputNumber>
                     </div>
                 </div>
             </ng-template>
-            
+
             <ng-template pTemplate="footer">
-                <button pButton pRipple label="Hủy" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
-                <button pButton pRipple label="Lưu" icon="pi pi-check" class="p-button-text" (click)="saveProduct(product)"></button>
+                <button pButton pRipple label="Hủy" icon="pi pi-times" class="p-button-text"
+                    (click)="hideDialog()"></button>
+                <button pButton pRipple label="Lưu" icon="pi pi-check" class="p-button-text"
+                    (click)="saveProduct(product)"></button>
             </ng-template>
         </p-dialog>
 

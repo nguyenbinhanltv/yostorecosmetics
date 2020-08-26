@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'environments/environment';
 import { Observable } from 'rxjs';
+import { Image } from 'app/models/image.model';
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +31,12 @@ export class OptionsService {
 
   deleteProduct(optionId: string): Observable<any> {
     return this.http.delete<any>(environment.apiEndPoint + `/options/${optionId}`);
+  }
+
+  getImages() {
+    return this.http.get<any>('assets/data/photos.json')
+      .toPromise()
+      .then(res => <Image[]>res.data)
+      .then(data => { return data; });
   }
 }

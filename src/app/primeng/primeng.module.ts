@@ -24,6 +24,9 @@ import { RatingModule } from 'primeng/rating';
 import { InputTextModule } from 'primeng/inputtext';
 import { RippleModule } from 'primeng/ripple';
 import { MultiSelectModule } from 'primeng/multiselect';
+import { TerminalModule } from 'primeng/terminal';
+import { GalleriaModule } from 'primeng/galleria';
+import { FieldsetModule } from 'primeng/fieldset';
 
 const primengModule = [
   ToolbarModule,
@@ -42,7 +45,10 @@ const primengModule = [
   RatingModule,
   InputTextModule,
   RippleModule,
-  MultiSelectModule
+  MultiSelectModule,
+  TerminalModule,
+  GalleriaModule,
+  FieldsetModule
 ];
 
 const materialModule = [
