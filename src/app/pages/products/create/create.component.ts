@@ -16,7 +16,7 @@ import { OptionsService } from 'app/services/options.service';
   styleUrls: ['./create.component.css'],
 })
 export class CreateComponent implements OnInit {
-  productFrom: FormGroup;
+  productForm: FormGroup;
 
   submitted: boolean;
 
@@ -45,7 +45,7 @@ export class CreateComponent implements OnInit {
   }
 
   initProductForm(): void {
-    this.productFrom = this.fb.group({
+    this.productForm = this.fb.group({
       productName: new FormControl('', Validators.required),
       productId: new FormControl('', Validators.required),
       productBarCode: new FormControl('', Validators.required),
@@ -72,7 +72,7 @@ export class CreateComponent implements OnInit {
 
   onSubmit(data: any): void {
     this.submitted = true;
-    this.productsService.createProduct(this.productFrom.value).subscribe();
+    this.productsService.createProduct(this.productForm.value).subscribe();
     this.messageService.add({
       severity: 'success',
       summary: 'OK',

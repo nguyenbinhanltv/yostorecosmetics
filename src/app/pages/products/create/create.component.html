@@ -18,7 +18,7 @@
         <div class="column">
             <p-toast [style]="{marginTop: '10px'}"></p-toast>
 
-            <form [formGroup]="productFrom" (ngSubmit)="onSubmit(productFrom.value)">
+            <form [formGroup]="productForm" (ngSubmit)="onSubmit(productForm.value)">
                 <div class="row" style="width: 100%;">
                     <p-panel header="Sản phẩm" class="panel-left">
                         <div class="p-fluid forms-grid" style="margin: 1em 0">
@@ -30,8 +30,8 @@
                                     <input id="productName" type="text" aria-describedby="productName-help" pInputText
                                         formControlName="productName" placeholder="Nhập tên sản phẩm" />
                                     <small id="productName-help" class="p-invalid"
-                                        *ngIf="!productFrom.controls['productName'].valid && productFrom.controls['productName'].dirty">
-                                        Cầnnhập tên sản phẩm.
+                                        *ngIf="!productForm.controls['productName'].valid && productForm.controls['productName'].dirty">
+                                        Cần nhập tên sản phẩm.
                                     </small>
                                 </div>
                             </div>
@@ -43,7 +43,7 @@
                                     <input id="productId" type="text" aria-describedby="productId-help" pInputText
                                         formControlName="productId" placeholder="Có thể nhập bất kì, sẽ tự tạo lại" />
                                     <small id="productId-help" class="p-invalid"
-                                        *ngIf="!productFrom.controls['productId'].valid && productFrom.controls['productId'].dirty">Cần
+                                        *ngIf="!productForm.controls['productId'].valid && productForm.controls['productId'].dirty">Cần
                                         nhập mã sản phẩm.
                                     </small>
                                 </div>
@@ -56,7 +56,7 @@
                                     <input id="productBarCode" type="text" aria-describedby="productBarCode-help"
                                         pInputText formControlName="productBarCode" placeholder="" />
                                     <small id="productBarCode-help" class="p-invalid"
-                                        *ngIf="!productFrom.controls['productBarCode'].valid && productFrom.controls['productBarCode'].dirty">Cần
+                                        *ngIf="!productForm.controls['productBarCode'].valid && productForm.controls['productBarCode'].dirty">Cần
                                         nhập barcode.
                                     </small>
                                 </div>
@@ -70,7 +70,7 @@
                                         aria-describedby="productOrigin-help" optionLabel="name">
                                     </p-multiSelect>
                                     <small id="productOrigin-help" class="p-invalid"
-                                        *ngIf="!productFrom.controls['productOrigin'].valid && productFrom.controls['productOrigin'].dirty">Cần
+                                        *ngIf="!productForm.controls['productOrigin'].valid && productForm.controls['productOrigin'].dirty">Cần
                                         nhập xuất xứ sản phẩm.
                                     </small>
                                 </div>
@@ -91,7 +91,7 @@
                                         currency="VND">
                                     </p-inputNumber>
                                     <small id="productRetailPrice-help" class="p-invalid"
-                                        *ngIf="!productFrom.controls['productRetailPrice'].valid && productFrom.controls['productRetailPrice'].dirty">Cần
+                                        *ngIf="!productForm.controls['productRetailPrice'].valid && productForm.controls['productRetailPrice'].dirty">Cần
                                         nhập giá bán lẻ sản phẩm.
                                     </small>
                                 </div>
@@ -108,7 +108,7 @@
                                         currency="VND">
                                     </p-inputNumber>
                                     <small id="productWholesalePrice-help" class="p-invalid"
-                                        *ngIf="!productFrom.controls['productWholesalePrice'].valid && productFrom.controls['productWholesalePrice'].dirty">Cần
+                                        *ngIf="!productForm.controls['productWholesalePrice'].valid && productForm.controls['productWholesalePrice'].dirty">Cần
                                         nhập giá bán buôn sản phẩm.
                                     </small>
                                 </div>
@@ -124,14 +124,14 @@
                                         currency="VND">
                                     </p-inputNumber>
                                     <small id="productStockPrice-help" class="p-invalid"
-                                        *ngIf="!productFrom.controls['productStockPrice'].valid && productFrom.controls['productStockPrice'].dirty">Cần
+                                        *ngIf="!productForm.controls['productStockPrice'].valid && productForm.controls['productStockPrice'].dirty">Cần
                                         nhập giá nhập kho sản phẩm.
                                     </small>
                                 </div>
                             </div>
                             <div style="display: flex; align-items: center; justify-content: center;">
                                 <button pButton type="button" label="Tính giá"
-                                    [disabled]="!productFrom.controls['productStockPrice'].valid" (click)="calPrices()"
+                                    [disabled]="!productForm.controls['productStockPrice'].valid" (click)="calPrices()"
                                     class="ui-button-raised" style="width: 50%;">
                                 </button>
                             </div>
@@ -150,7 +150,7 @@
                                     <input id="productWeight" type="text" aria-describedby="productWeight-help"
                                         pInputText formControlName="productWeight" placeholder="" />
                                     <small id="productWeight-help" class="p-invalid"
-                                        *ngIf="!productFrom.controls['productWeight'].valid && productFrom.controls['productWeight'].dirty">Cần
+                                        *ngIf="!productForm.controls['productWeight'].valid && productForm.controls['productWeight'].dirty">Cần
                                         nhập khối lượng sản phẩm.
                                     </small>
                                 </div>
@@ -164,7 +164,7 @@
                                         aria-describedby="productUnit-help" optionLabel="name">
                                     </p-multiSelect>
                                     <small id="productUnit-help" class="p-invalid"
-                                        *ngIf="!productFrom.controls['productUnit'].valid && productFrom.controls['productUnit'].dirty">Cần
+                                        *ngIf="!productForm.controls['productUnit'].valid && productForm.controls['productUnit'].dirty">Cần
                                         nhập đơn vị tính sản phẩm.
                                     </small>
                                 </div>
@@ -182,7 +182,7 @@
                                     <input id="productType" type="text" aria-describedby="productType-help" pInputText
                                         formControlName="productType" placeholder="" />
                                     <small id="productType-help" class="p-invalid"
-                                        *ngIf="!productFrom.controls['productType'].valid && productFrom.controls['productType'].dirty">Cần
+                                        *ngIf="!productForm.controls['productType'].valid && productForm.controls['productType'].dirty">Cần
                                         nhập loại sản phẩm.
                                     </small>
                                 </div>
@@ -196,7 +196,7 @@
                                         aria-describedby="productMark-help" optionLabel="name">
                                     </p-multiSelect>
                                     <small id="productMark-help" class="p-invalid"
-                                        *ngIf="!productFrom.controls['productMark'].valid && productFrom.controls['productMark'].dirty">Cần
+                                        *ngIf="!productForm.controls['productMark'].valid && productForm.controls['productMark'].dirty">Cần
                                         nhập nhãn hiệu sản phẩm.
                                     </small>
                                 </div>
@@ -211,7 +211,7 @@
         <div style="display: flex; flex-direction: row-reverse;">
             <button pButton type="reset" label="Hủy" routerLink="/products"
                 class="ui-button-raised ui-button-secondary"></button>
-            <button pButton type="submit" label="Lưu" [disabled]="!productFrom.valid" (click)="onSubmit(productFrom.value)"
+            <button pButton type="submit" label="Lưu" [disabled]="!productForm.valid" (click)="onSubmit(productForm.value)"
                 class="ui-button-raised"></button>
         </div>
 

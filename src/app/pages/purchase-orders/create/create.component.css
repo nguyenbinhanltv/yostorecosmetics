@@ -1,0 +1,64 @@
+:host ::ng-deep .forms-grid>div {
+  display: flex;
+  align-items: center;
+  padding: 1em;
+}
+
+:host ::ng-deep .forms-grid>div>div:first-child {
+  min-width: 10em;
+}
+
+input,
+textarea {
+  flex: 1 1 auto;
+}
+
+:host ::ng-deep .ui-message {
+  margin-left: 1em;
+}
+
+@media screen and (max-width: 64em) {
+  :host ::ng-deep .ui-message-text {
+      display: none;
+  }
+}
+
+.main-content {
+  margin: 0 !important;
+}
+
+p-panel {
+  margin: 20px;
+}
+
+button {
+  margin: 10px;
+}
+
+div {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+.panel-left {
+  width: 45% !important;
+}
+
+.panel-right {
+  width: 45% !important;
+}
+
+p {
+  font-size: xx-large;
+}
+
+.ui-toolbar-group-left {
+  width: 100%;
+}
+
+p {
+  margin: 20px;
+}
+
+.p-field {
+  width: 100%;
+}

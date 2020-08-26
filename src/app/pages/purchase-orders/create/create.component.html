@@ -1,1 +1,141 @@
-<p>create works!</p>
+<div class="main-content">
+
+  <div class="ui-toolbar-group-left">
+    <button pButton type="button" label="Quay lại đơn nhập hàng" icon="pi pi-chevron-left" routerLink="/purchase-orders"
+      class="p-button-text">
+    </button>
+    <div>
+      <p>
+        Thêm mới đơn nhập hàng
+      </p>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div>
+
+    </div>
+    <div class="column">
+      <p-toast [style]="{marginTop: '10px'}"></p-toast>
+
+      <form [formGroup]="purchaseOrdersForm" (ngSubmit)="onSubmit(purchaseOrdersForm.value)">
+        <div class="row" style="width: 100%;">
+          <p-panel header="Sản phẩm" class="panel-left">
+            <div class="p-fluid forms-grid" style="margin: 1em 0">
+              <div>
+                <div>
+                  Mã đơn *
+                </div>
+                <div class="p-field">
+                  <input id="purchaseOrdersId" type="text" aria-describedby="purchaseOrdersId-help" pInputText
+                    formControlName="purchaseOrdersId" placeholder="Nhập mã đơn hàng" />
+                  <small id="purchaseOrdersId-help" class="p-invalid"
+                    *ngIf="!purchaseOrdersForm.controls['purchaseOrdersId'].valid && purchaseOrdersForm.controls['purchaseOrdersId'].dirty">
+                    Cần nhập mã đơn hàng.
+                  </small>
+                </div>
+              </div>
+              <div>
+                <div>
+                  Tên nhà cung cấp *
+                </div>
+                <div class="p-field">
+                  <input id="purchaseOrdersSupplier" type="text" aria-describedby="purchaseOrdersSupplier-help"
+                    pInputText formControlName="purchaseOrdersSupplier" placeholder="Nhập tên nhà cung cấp" />
+                  <small id="purchaseOrdersSupplier-help" class="p-invalid"
+                    *ngIf="!purchaseOrdersForm.controls['purchaseOrdersSupplier'].valid && purchaseOrdersForm.controls['purchaseOrdersSupplier'].dirty">
+                    Cần nhập nhà cung cấp.
+                  </small>
+                </div>
+              </div>
+              <div>
+                <div>
+                  Trạng thái *
+                </div>
+                <div class="p-field">
+                  <p-multiSelect [options]="purchaseOrdersStatusOptions" formControlName="purchaseOrdersStatus"
+                    aria-describedby="purchaseOrdersStatus-help" optionLabel="name">
+                  </p-multiSelect>
+                  <small id="purchaseOrdersStatus-help" class="p-invalid"
+                    *ngIf="!purchaseOrdersForm.controls['purchaseOrdersStatus'].valid && purchaseOrdersForm.controls['purchaseOrdersStatus'].dirty">
+                    Cần nhập trạng thái.
+                  </small>
+                </div>
+              </div>
+              <div>
+                <div>
+                  Nhân viên tạo *
+                </div>
+                <div class="p-field">
+                  <input id="purchaseOrdersStaff" type="text" aria-describedby="purchaseOrdersStaff-help" pInputText
+                    formControlName="purchaseOrdersStaff" placeholder="" />
+                  <small id="purchaseOrdersStaff-help" class="p-invalid"
+                    *ngIf="!purchaseOrdersForm.controls['purchaseOrdersStaff'].valid && purchaseOrdersForm.controls['purchaseOrdersStaff'].dirty">
+                    Cần nhập nhân viên tạo đơn hàng.
+                  </small>
+                </div>
+              </div>
+            </div>
+          </p-panel>
+
+          <p-panel header="Giá sản phẩm" class="panel-right">
+            <div class="p-fluid forms-grid" style="margin: 1em 0">
+              <div>
+                <div>
+                  Nhập kho *
+                </div>
+                <div class="p-field">
+                  <p-multiSelect [options]="purchaseOrdersWareHouseOptions" formControlName="purchaseOrdersWareHouse"
+                    aria-describedby="purchaseOrdersWareHouse-help" optionLabel="name">
+                  </p-multiSelect>
+                  <small id="purchaseOrdersWareHouse-help" class="p-invalid"
+                    *ngIf="!purchaseOrdersForm.controls['purchaseOrdersWareHouse'].valid && purchaseOrdersForm.controls['purchaseOrdersWareHouse'].dirty">
+                    Cần nhập kho hàng.
+                  </small>
+                </div>
+              </div>
+              <div>
+                <div>
+                  Thanh toán *
+                </div>
+                <div class="p-field">
+                  <p-multiSelect [options]="purchaseOrdersPaymentStatusOptions" formControlName="purchaseOrdersPaymentStatus"
+                    aria-describedby="purchaseOrdersPaymentStatus-help" optionLabel="name">
+                  </p-multiSelect>
+                  <small id="purchaseOrdersPaymentStatus-help" class="p-invalid"
+                    *ngIf="!purchaseOrdersForm.controls['purchaseOrdersPaymentStatus'].valid && purchaseOrdersForm.controls['purchaseOrdersPaymentStatus'].dirty">
+                    Cần nhập trạng thái thanh toán.
+                  </small>
+                </div>
+              </div>
+              <div>
+                <div>
+                  Tổng tiền *
+                </div>
+                <div class="p-field">
+                  <p-inputNumber id="purchaseOrdersTotalPrice" aria-describedby="purchaseOrdersTotalPrice-help"
+                    formControlName="purchaseOrdersTotalPrice" [showButtons]="false" buttonLayout="horizontal"
+                    spinnerMode="horizontal" mode="currency" currency="VND">
+                  </p-inputNumber>
+                  <small id="purchaseOrdersTotalPrice-help" class="p-invalid"
+                    *ngIf="!purchaseOrdersForm.controls['purchaseOrdersTotalPrice'].valid && purchaseOrdersForm.controls['purchaseOrdersTotalPrice'].dirty">
+                    Cần nhập tổng tiền đơn hàng.
+                  </small>
+                </div>
+              </div>
+            </div>
+          </p-panel>
+        </div>
+      </form>
+    </div>
+
+    <div style="display: flex; flex-direction: row-reverse;">
+      <button pButton type="reset" label="Hủy" routerLink="/products"
+        class="ui-button-raised ui-button-secondary"></button>
+      <button pButton type="submit" label="Lưu" [disabled]="!purchaseOrdersForm.valid"
+        (click)="onSubmit(purchaseOrdersForm.value)" class="ui-button-raised"></button>
+    </div>
+
+  </div>
+
+</div>
