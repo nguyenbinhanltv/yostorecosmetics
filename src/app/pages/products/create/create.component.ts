@@ -65,7 +65,6 @@ export class CreateComponent implements OnInit {
     for (const [key, value] of Object.entries(options)) {
       data.push({
         name: key,
-        value: key
       });
     }
     return data;

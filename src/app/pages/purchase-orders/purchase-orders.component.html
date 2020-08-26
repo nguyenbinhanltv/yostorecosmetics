@@ -8,7 +8,8 @@
         <button pButton type="button" label="Tạo đơn nhập hàng" routerLink="create" class="p-button-text" icon="pi pi-plus"></button>
     </div>
     <div class="container-fluid">
-        <p-table #dt [value]="cars" [paginator]="true" [rows]="10" [rowHover]="true"
+        <p-progressSpinner *ngIf="!isLoading"></p-progressSpinner>
+        <p-table *ngIf="isLoading" #dt [value]="cars" [paginator]="true" [rows]="10" [rowHover]="true"
             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
             [showCurrentPageReport]="true" [globalFilterFields]="[]">
             <ng-template pTemplate="caption">
