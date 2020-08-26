@@ -27,6 +27,7 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { TerminalModule } from 'primeng/terminal';
 import { GalleriaModule } from 'primeng/galleria';
 import { FieldsetModule } from 'primeng/fieldset';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 const primengModule = [
   ToolbarModule,
@@ -48,7 +49,8 @@ const primengModule = [
   MultiSelectModule,
   TerminalModule,
   GalleriaModule,
-  FieldsetModule
+  FieldsetModule,
+  ProgressSpinnerModule
 ];
 
 const materialModule = [

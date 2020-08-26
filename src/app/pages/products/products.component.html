@@ -10,7 +10,8 @@
     </div>
     <div class="container-fluid">
         <p-toast [style]="{marginTop: '10px'}"></p-toast>
-        <p-table #dt [(value)]="products" [paginator]="true" [rows]="10" [rowHover]="true"
+        <p-progressSpinner *ngIf="!isLoading"></p-progressSpinner>
+        <p-table *ngIf="isLoading" #dt [(value)]="products" [paginator]="true" [rows]="10" [rowHover]="true"
             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
             [showCurrentPageReport]="true"
             [globalFilterFields]="['productName', 'productType', 'productMark', 'productOrigin', 'productTimeCreated']">
@@ -73,9 +74,9 @@
                     </td>
                     <td>{{product?.productTimeCreated}}</td>
                     <td>
-                        <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2"
+                        <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-mr-2"
                             (click)="editProduct(product)"></button>
-                        <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"
+                        <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger"
                             (click)="deleteProduct(product)"></button>
                     </td>
                 </tr>

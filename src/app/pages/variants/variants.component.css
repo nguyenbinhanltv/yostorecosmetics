@@ -19,7 +19,7 @@ textarea {
 
 @media screen and (max-width: 64em) {
   :host ::ng-deep .ui-message-text {
-      display: none;
+    display: none;
   }
 }
 
@@ -69,6 +69,8 @@ p {
 
 .container-fluid {
   margin-top: 5vh;
+  display: flex;
+  justify-content: center;
 }
 
 h5 {

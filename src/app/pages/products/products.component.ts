@@ -3,6 +3,8 @@ import { ProductsListService } from 'app/services/products-list.service';
 import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
 import { Product } from 'app/models/products.model';
+import { of, forkJoin } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-products',
@@ -15,15 +17,25 @@ export class ProductsComponent implements OnInit, OnDestroy {
   productDialog: boolean;
   submitted: boolean;
 
+  // flag when had data
+  isLoading: boolean;
+
   constructor(
     private productsService: ProductsListService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService
   ) {
-    this.productsService.getProducts().subscribe(data => this.products = data);
+    forkJoin(
+      of(true).pipe(delay(1000)),
+      this.productsService.getProducts(),
+    ).subscribe(data => {
+      this.isLoading = data[0];
+      this.products = data[1];
+    });
   }
 
   ngOnInit(): void {
+    of(false).subscribe(val => this.isLoading = val);
   }
 
   ngOnDestroy(): void {
