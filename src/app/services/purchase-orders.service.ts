@@ -21,6 +21,10 @@ export class PurchaseOrdersService {
     return this.http.get<PurchaseOrders>(environment.apiEndPoint + `/purchase-orders/${purchaseOrdersId}}`);
   }
 
+  createPurchaseOrders(data: PurchaseOrders): Observable<PurchaseOrders> {
+    return this.http.post<PurchaseOrders>(environment.apiEndPoint + `/purchase-orders`, data);
+  }
+
   updatePurchaseOrders(purchaseOrdersId: string, data: PurchaseOrders): Observable<PurchaseOrders> {
     return this.http.patch<PurchaseOrders>(environment.apiEndPoint + `/purchase-orders/${purchaseOrdersId}`, data);
   }

@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { SelectItem } from 'primeng/api';
 import { MessageService } from 'primeng/api';
+import { PurchaseOrdersService } from 'app/services/purchase-orders.service';
 
 @Component({
   selector: 'app-create',
@@ -30,10 +31,11 @@ export class CreateComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private messageService: MessageService,
+    private purchaserOrdersService: PurchaseOrdersService
   ) { }
 
   ngOnInit(): void {
-    this.initProductForm();
+    this.initPurchaseOrdersForm();
 
     this.purchaseOrdersStatusOptions = [
       { name: 'Waiting' },
@@ -45,7 +47,7 @@ export class CreateComponent implements OnInit {
     ];
   }
 
-  initProductForm(): void {
+  initPurchaseOrdersForm(): void {
     this.purchaseOrdersForm = this.fb.group({
       purchaseOrdersId: new FormControl('', Validators.required),
       purchaseOrdersSupplier: new FormControl('', Validators.required),
@@ -59,13 +61,14 @@ export class CreateComponent implements OnInit {
 
   onSubmit(data: any): void {
     this.submitted = true;
+    this.purchaserOrdersService.createPurchaseOrders(this.purchaseOrdersForm.value).subscribe();
     this.messageService.add({
       severity: 'success',
       summary: 'OK',
-      detail: 'Lưu thông tin sản phẩm thành công.',
+      detail: 'Lưu thông tin đơn hàng thành công.',
       life: 3000
     });
-    this.initProductForm();
+    this.initPurchaseOrdersForm();
   }
 
 }
