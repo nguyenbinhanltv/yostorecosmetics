@@ -12,10 +12,10 @@
   </div>
 
   <div class="container-fluid">
-    <div>
-
+    <div class="flex-box">
+      <p-progressSpinner *ngIf="!isLoading"></p-progressSpinner>
     </div>
-    <div class="column">
+    <div class="column" *ngIf="isLoading">
       <p-toast [style]="{marginTop: '10px'}"></p-toast>
 
       <form [formGroup]="purchaseOrdersForm" (ngSubmit)="onSubmit(purchaseOrdersForm.value)">
@@ -86,7 +86,7 @@
                 </div>
                 <div class="p-field">
                   <p-multiSelect [options]="purchaseOrdersWareHouseOptions" formControlName="purchaseOrdersWareHouse"
-                    aria-describedby="purchaseOrdersWareHouse-help" optionLabel="name">
+                    aria-describedby="purchaseOrdersWareHouse-help" optionLabel="productName">
                   </p-multiSelect>
                   <small id="purchaseOrdersWareHouse-help" class="p-invalid"
                     *ngIf="!purchaseOrdersForm.controls['purchaseOrdersWareHouse'].valid && purchaseOrdersForm.controls['purchaseOrdersWareHouse'].dirty">

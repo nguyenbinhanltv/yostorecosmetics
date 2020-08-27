@@ -62,3 +62,15 @@ p {
 .p-field {
   width: 100%;
 }
+
+.container-fluid {
+  display: flex;
+  /* justify-content: center;
+  align-items: center; */
+  flex-direction: column;
+}
+
+.flex-box {
+  display: flex;
+  justify-content: center;
+}

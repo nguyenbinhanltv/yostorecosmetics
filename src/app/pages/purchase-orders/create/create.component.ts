@@ -8,6 +8,10 @@ import {
 import { SelectItem } from 'primeng/api';
 import { MessageService } from 'primeng/api';
 import { PurchaseOrdersService } from 'app/services/purchase-orders.service';
+import { ProductsListService } from 'app/services/products-list.service';
+import { forkJoin, of } from 'rxjs';
+import { delay } from 'rxjs/operators';
+import { Product } from 'app/models/products.model';
 
 @Component({
   selector: 'app-create',
@@ -28,14 +32,28 @@ export class CreateComponent implements OnInit {
   purchaseOrdersWareHouseOptions;
   purchaseOrdersPaymentStatusOptions;
 
+  // flag
+  isLoading: boolean;
+
   constructor(
     private fb: FormBuilder,
     private messageService: MessageService,
-    private purchaserOrdersService: PurchaseOrdersService
-  ) { }
+    private purchaserOrdersService: PurchaseOrdersService,
+    private productsService: ProductsListService
+  ) {
+    forkJoin(
+      of(true).pipe(delay(1000)),
+      productsService.getProducts(),
+    )
+    .subscribe((data) => {
+      this.isLoading = data[0];
+      this.purchaseOrdersWareHouseOptions = data[1];
+    });
+  }
 
   ngOnInit(): void {
     this.initPurchaseOrdersForm();
+    of(false).subscribe(val => this.isLoading = val);
 
     this.purchaseOrdersStatusOptions = [
       { name: 'Waiting' },
