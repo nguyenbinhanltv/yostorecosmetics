@@ -8,6 +8,7 @@
 
 .image-content {
   width: 50%;
+  max-height: 100%;
   display: flex;
   justify-content: left;
   align-items: center;
@@ -17,16 +18,17 @@
 
 .login-form {
   width: 50%;
+  max-height: 100vh;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
 }
 
-h1 {
+h1, p {
   color: #6C63FF;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  font-size: 5rem;
+  font-size: 2rem;
   line-height: 160px;
   font-weight: normal;
   text-align: center;

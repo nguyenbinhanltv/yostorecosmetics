@@ -1,29 +1,14 @@
 <div class="login">
   <div class="image-content">
     <img src="../../../assets/img/undraw_fitting_piece_iilo.svg" alt="" style="min-height: 70vh;">
-    <h1>YOStorecosmetics</h1>
   </div>
 
   <div class="login-form">
     <div>
-      <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded p-button-text"></button>
-      <button pButton pRipple type="button" icon="pi pi-bookmark"
-        class="p-button-rounded p-button-secondary p-button-text"></button>
-      <button pButton pRipple type="button" icon="pi pi-search"
-        class="p-button-rounded p-button-success p-button-text"></button>
-      <button pButton pRipple type="button" icon="pi pi-user"
-        class="p-button-rounded p-button-info p-button-text"></button>
-      <button pButton pRipple type="button" icon="pi pi-bell"
-        class="p-button-rounded p-button-warning p-button-text"></button>
-      <button pButton pRipple type="button" icon="pi pi-heart"
-        class="p-button-rounded p-button-help p-button-text"></button>
-      <button pButton pRipple type="button" icon="pi pi-times"
-        class="p-button-rounded p-button-danger p-button-text"></button>
-      <button pButton pRipple type="button" icon="pi pi-filter"
-        class="p-button-rounded p-button-text p-button-plain"></button>
+      <p>YOStorecosmetics</p>
     </div>
-    <p-galleria [(value)]="images" [responsiveOptions]="responsiveOptions"
-      [containerStyle]="{'max-width': '640px', 'margin': '50px'}" [numVisible]="5" [circular]="true" [autoPlay]="true"
+    <!-- <p-galleria [(value)]="images" [responsiveOptions]="responsiveOptions"
+      [containerStyle]="{'max-width': '640px'}" [numVisible]="5" [circular]="true" [autoPlay]="true"
       [transitionInterval]="2000">
       <ng-template pTemplate="item" let-item>
         <img [src]="item.previewImageSrc" style="width: 100%; display: block;" />
@@ -33,7 +18,7 @@
           <img [src]="item.thumbnailImageSrc" style="display: block;" />
         </div>
       </ng-template>
-    </p-galleria>
+    </p-galleria> -->
 
     <button pButton pRipple type="button" label="Let Start" class="p-button-outlined p-button-help"
       styleClass="p-button-lg" [routerLink]="['/products']"></button>
