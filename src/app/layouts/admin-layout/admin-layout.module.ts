@@ -13,6 +13,7 @@ import { PurchaseOrdersComponent } from 'app/pages/purchase-orders/purchase-orde
 import { PrimengModule } from 'app/primeng/primeng.module';
 import { OptionsService } from 'app/services/options.service';
 import { ProductsListService } from 'app/services/products-list.service';
+import { WareHouse } from 'app/dialog/warehouse/warehouse.component';
 
 
 @NgModule({
@@ -30,13 +31,15 @@ import { ProductsListService } from 'app/services/products-list.service';
     VariantsComponent,
     PurchaseOrdersComponent,
     PurchaseOrdersCreateComponent,
+    WareHouse
   ],
   providers: [
     MessageService,
     ConfirmationService,
     OptionsService,
     ProductsListService,
-  ]
+  ],
+  entryComponents: [WareHouse]
 })
 
 export class AdminLayoutModule {}

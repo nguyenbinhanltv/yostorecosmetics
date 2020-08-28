@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
   Validators,
   FormControl,
@@ -13,16 +13,16 @@ import { forkJoin, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import { Product } from 'app/models/products.model';
 
-import {DialogService} from 'primeng/dynamicdialog';
+import {DialogService, DynamicDialogRef} from 'primeng/dynamicdialog';
 import { WareHouse } from '../../../dialog/warehouse/warehouse.component';
 
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.css'],
-  providers: [DialogService]
+  providers: [DialogService],
 })
-export class CreateComponent implements OnInit {
+export class CreateComponent implements OnInit, OnDestroy {
   purchaseOrdersForm: FormGroup;
 
   submitted: boolean;
@@ -40,6 +40,7 @@ export class CreateComponent implements OnInit {
   isLoading: boolean;
 
   wareHouse: Product[];
+  ref: DynamicDialogRef;
 
   constructor(
     private fb: FormBuilder,
@@ -72,11 +73,23 @@ export class CreateComponent implements OnInit {
     ];
   }
 
+  ngOnDestroy(): void {
+    if (this.ref) {
+      this.ref.close();
+    }
+  }
+
   editWareHouse(data: Product[]): void {
-    this.dialogService.open(WareHouse, {
-      header: 'Choose Products',
+    this.ref = this.dialogService.open(WareHouse, {
+      header: 'Sửa đổi số lượng sản phẩm đơn hàng',
       width: '70%',
       data: data,
+    });
+
+    this.ref.onClose.subscribe((products: Product[]) => {
+      if (products) {
+        this.messageService.add(({severity: 'info', summary: 'Product Selected', detail: 'OK'}));
+      }
     });
   }
 

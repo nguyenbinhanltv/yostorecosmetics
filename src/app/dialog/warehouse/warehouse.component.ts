@@ -1,17 +1,27 @@
-import {Component, Input} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DynamicDialogRef} from 'primeng/dynamicdialog';
 import {DynamicDialogConfig} from 'primeng/dynamicdialog';
 import { Product } from 'app/models/products.model';
 
 @Component({
     templateUrl: './warehouse.component.html',
+    styleUrls: ['./warehouse.component.scss']
 })
 
-export class WareHouse {
-    @Input() warehouse: Product[];
+export class WareHouse implements OnInit {
+    dataWareHouse: Product[];
 
     constructor(
         public ref: DynamicDialogRef,
         public config: DynamicDialogConfig
     ) {}
+
+    ngOnInit(): void {
+        this.dataWareHouse = [...this.config.data];
+        console.log(this.dataWareHouse);
+    }
+
+    editAmount(product: Product) {
+        console.log(product);
+    }
 }

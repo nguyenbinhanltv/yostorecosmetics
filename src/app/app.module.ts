@@ -41,6 +41,6 @@ import { LoginComponent } from './pages/login/login.component';
     LoginComponent
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -5,7 +5,7 @@ import { delay } from 'rxjs/operators';
 @Component({
   selector: 'app-purchase-orders',
   templateUrl: './purchase-orders.component.html',
-  styleUrls: ['./purchase-orders.component.css']
+  styleUrls: ['./purchase-orders.component.css'],
 })
 export class PurchaseOrdersComponent implements OnInit {
   cars = [];
