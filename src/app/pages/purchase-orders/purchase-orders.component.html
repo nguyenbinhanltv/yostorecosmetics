@@ -11,7 +11,7 @@
         <p-progressSpinner *ngIf="!isLoading"></p-progressSpinner>
         <p-table *ngIf="isLoading" #dt [value]="purchaseOrders" [paginator]="true" [rows]="10" [rowHover]="true"
             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-            [showCurrentPageReport]="true" [globalFilterFields]="[]">
+            [showCurrentPageReport]="true" [globalFilterFields]="['purchaseOrdersId', 'purchaseOrdersStaff', 'purchaseOrdersStatus' , 'purchaseOrdersPaymentStatus', 'purchaseOrdersWareHouse', 'purchaseOrdersTotalPrice', 'purchaseOrdersSupplier']">
             <ng-template pTemplate="caption">
                 <div class="flex-box">
                     <h5>Tất cả đơn nhập hàng</h5>
