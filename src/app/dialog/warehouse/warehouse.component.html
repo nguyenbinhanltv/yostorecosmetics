@@ -1,6 +1,6 @@
 <p-table #dt [value]="dataWareHouse" [paginator]="true" [rows]="10" [rowHover]="true"
   currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true"
-  [globalFilterFields]="[]">
+  [globalFilterFields]="['productId', 'productName', 'productType', 'productMark', 'productAmount']">
   <ng-template pTemplate="caption">
     <div class="flex-box">
       <h5 style="margin: 0;">Tất cả sản phảm đã chọn</h5>
@@ -13,20 +13,35 @@
   </ng-template>
   <ng-template pTemplate="header">
     <tr>
-      <th>
-        <h5>Mã sản phẩm</h5>
+      <th pSortableColumn="productId">
+        <h5>
+          Mã sản phẩm
+          <p-sortIcon field="productId"></p-sortIcon>
+        </h5>
       </th>
-      <th>
-        <h5>Tên sản phẩm</h5>
+      <th pSortableColumn="productName">
+        <h5>
+          Tên sản phẩm
+          <p-sortIcon field="productName"></p-sortIcon>
+        </h5>
       </th>
-      <th>
-        <h5>Loại sản phẩm</h5>
+      <th pSortableColumn="productType">
+        <h5>
+          Loại sản phẩm
+          <p-sortIcon field="productType"></p-sortIcon>
+        </h5>
       </th>
-      <th>
-        <h5>Số lượng</h5>
+      <th pSortableColumn="productMark">
+        <h5>
+          Nhãn hiệu
+          <p-sortIcon field="productMark"></p-sortIcon>
+        </h5>
       </th>
-      <th>
-        <h5>Edit</h5>
+      <th pSortableColumn="productAmount">
+        <h5>
+          Số lượng
+          <p-sortIcon field="productAmount"></p-sortIcon>
+        </h5>
       </th>
     </tr>
   </ng-template>
@@ -35,13 +50,10 @@
       <td>{{warehouse.productId}}</td>
       <td>{{warehouse.productName}}</td>
       <td>{{warehouse.productType}}</td>
+      <td>{{warehouse.productMark}}</td>
       <td>
         <p-inputNumber [(ngModel)]="warehouse.productAmount" mode="decimal" [showButtons]="true" inputId="minmax-buttons" [min]="0" [max]="100">
         </p-inputNumber>
-      </td>
-      <td>
-        <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-mr-2"
-          (click)="editAmount(warehouse)"></button>
       </td>
     </tr>
   </ng-template>
