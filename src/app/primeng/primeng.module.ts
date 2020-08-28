@@ -28,6 +28,7 @@ import { TerminalModule } from 'primeng/terminal';
 import { GalleriaModule } from 'primeng/galleria';
 import { FieldsetModule } from 'primeng/fieldset';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { BreadcrumbModule } from 'primeng/breadcrumb';
 
 const primengModule = [
   ToolbarModule,
@@ -50,7 +51,8 @@ const primengModule = [
   TerminalModule,
   GalleriaModule,
   FieldsetModule,
-  ProgressSpinnerModule
+  ProgressSpinnerModule,
+  BreadcrumbModule
 ];
 
 const materialModule = [

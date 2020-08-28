@@ -13,10 +13,14 @@ import { forkJoin, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import { Product } from 'app/models/products.model';
 
+import {DialogService} from 'primeng/dynamicdialog';
+import { WareHouse } from '../../../dialog/warehouse/warehouse.component';
+
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
-  styleUrls: ['./create.component.css']
+  styleUrls: ['./create.component.css'],
+  providers: [DialogService]
 })
 export class CreateComponent implements OnInit {
   purchaseOrdersForm: FormGroup;
@@ -35,11 +39,14 @@ export class CreateComponent implements OnInit {
   // flag
   isLoading: boolean;
 
+  wareHouse: Product[];
+
   constructor(
     private fb: FormBuilder,
     private messageService: MessageService,
     private purchaserOrdersService: PurchaseOrdersService,
-    private productsService: ProductsListService
+    private productsService: ProductsListService,
+    public dialogService: DialogService
   ) {
     forkJoin(
       of(true).pipe(delay(1000)),
@@ -63,6 +70,14 @@ export class CreateComponent implements OnInit {
       { name: 'Paid' },
       { name: 'Unpaid' }
     ];
+  }
+
+  editWareHouse(data: Product[]): void {
+    this.dialogService.open(WareHouse, {
+      header: 'Choose Products',
+      width: '70%',
+      data: data,
+    });
   }
 
   initPurchaseOrdersForm(): void {

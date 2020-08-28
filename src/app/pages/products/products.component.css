@@ -38,3 +38,9 @@ h5 {
     justify-content: space-between;
     align-items: center;
 }
+
+.none-style {
+    padding: 0 !important;
+    background: none !important;
+    border: none !important;
+}

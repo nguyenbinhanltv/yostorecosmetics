@@ -5,6 +5,7 @@ import { MessageService } from 'primeng/api';
 import { Product } from 'app/models/products.model';
 import { of, forkJoin } from 'rxjs';
 import { delay } from 'rxjs/operators';
+import { OptionsService } from 'app/services/options.service';
 
 @Component({
   selector: 'app-products',
@@ -23,7 +24,8 @@ export class ProductsComponent implements OnInit, OnDestroy {
   constructor(
     private productsService: ProductsListService,
     private messageService: MessageService,
-    private confirmationService: ConfirmationService
+    private confirmationService: ConfirmationService,
+    private optionsService: OptionsService
   ) {
     forkJoin(
       of(true).pipe(delay(1000)),

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'environments/environment';
 import { Observable } from 'rxjs';
 import { Image } from 'app/models/image.model';
+import { MenuItem } from 'primeng/api';
 
 @Injectable({
   providedIn: 'root'

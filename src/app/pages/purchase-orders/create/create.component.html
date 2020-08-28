@@ -85,9 +85,11 @@
                   Nhập kho *
                 </div>
                 <div class="p-field">
-                  <p-multiSelect [options]="purchaseOrdersWareHouseOptions" formControlName="purchaseOrdersWareHouse"
-                    aria-describedby="purchaseOrdersWareHouse-help" optionLabel="productName">
-                  </p-multiSelect>
+                  <div style="display: flex; justify-content: space-between; flex-direction: row; align-items: center;">
+                    <p-multiSelect [options]="purchaseOrdersWareHouseOptions" formControlName="purchaseOrdersWareHouse"
+                      aria-describedby="purchaseOrdersWareHouse-help" optionLabel="productName" [(ngModel)]="wareHouse">
+                    </p-multiSelect>
+                  </div>
                   <small id="purchaseOrdersWareHouse-help" class="p-invalid"
                     *ngIf="!purchaseOrdersForm.controls['purchaseOrdersWareHouse'].valid && purchaseOrdersForm.controls['purchaseOrdersWareHouse'].dirty">
                     Cần nhập kho hàng.
@@ -99,8 +101,9 @@
                   Thanh toán *
                 </div>
                 <div class="p-field">
-                  <p-multiSelect [options]="purchaseOrdersPaymentStatusOptions" formControlName="purchaseOrdersPaymentStatus"
-                    aria-describedby="purchaseOrdersPaymentStatus-help" optionLabel="name">
+                  <p-multiSelect [options]="purchaseOrdersPaymentStatusOptions"
+                    formControlName="purchaseOrdersPaymentStatus" aria-describedby="purchaseOrdersPaymentStatus-help"
+                    optionLabel="name">
                   </p-multiSelect>
                   <small id="purchaseOrdersPaymentStatus-help" class="p-invalid"
                     *ngIf="!purchaseOrdersForm.controls['purchaseOrdersPaymentStatus'].valid && purchaseOrdersForm.controls['purchaseOrdersPaymentStatus'].dirty">
@@ -134,6 +137,8 @@
         class="ui-button-raised ui-button-secondary"></button>
       <button pButton type="submit" label="Lưu" [disabled]="!purchaseOrdersForm.valid"
         (click)="onSubmit(purchaseOrdersForm.value)" class="ui-button-raised"></button>
+      <button *ngIf="wareHouse" label="Sửa số lượng sản phẩm kho nhập" pButton pRipple class="p-button-text"
+        (click)="editWareHouse(wareHouse)"></button>
     </div>
 
   </div>
