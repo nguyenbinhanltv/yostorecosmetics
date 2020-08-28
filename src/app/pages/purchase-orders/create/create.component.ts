@@ -87,7 +87,6 @@ export class CreateComponent implements OnInit, OnDestroy {
 
     this.ref.onClose.subscribe((products: Product[]) => {
       if (products) {
-        console.log(products);
         this.messageService.add({
           severity: 'success',
           summary: 'OK',

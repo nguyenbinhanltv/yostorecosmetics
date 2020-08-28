@@ -18,7 +18,6 @@ export class WareHouse implements OnInit {
 
     ngOnInit(): void {
         this.dataWareHouse = [...this.config.data];
-        console.log(this.dataWareHouse);
     }
 
     submitEditAmount(products: Product[]) {
