@@ -13,7 +13,7 @@ import { forkJoin, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import { Product } from 'app/models/products.model';
 
-import {DialogService, DynamicDialogRef} from 'primeng/dynamicdialog';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { WareHouse } from '../../../dialog/warehouse/warehouse.component';
 
 @Component({
@@ -51,9 +51,8 @@ export class CreateComponent implements OnInit, OnDestroy {
   ) {
     forkJoin(
       of(true).pipe(delay(1000)),
-      productsService.getProducts(),
-    )
-    .subscribe((data) => {
+      productsService.getProducts()
+    ).subscribe((data) => {
       this.isLoading = data[0];
       this.purchaseOrdersWareHouseOptions = data[1];
     });
@@ -61,15 +60,15 @@ export class CreateComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.initPurchaseOrdersForm();
-    of(false).subscribe(val => this.isLoading = val);
+    of(false).subscribe((val) => (this.isLoading = val));
 
     this.purchaseOrdersStatusOptions = [
       { name: 'Waiting' },
-      { name: 'Recieved' }
+      { name: 'Recieved' },
     ];
     this.purchaseOrdersPaymentStatusOptions = [
       { name: 'Paid' },
-      { name: 'Unpaid' }
+      { name: 'Unpaid' },
     ];
   }
 
@@ -88,7 +87,16 @@ export class CreateComponent implements OnInit, OnDestroy {
 
     this.ref.onClose.subscribe((products: Product[]) => {
       if (products) {
-        this.messageService.add(({severity: 'info', summary: 'Product Selected', detail: 'OK'}));
+        console.log(products);
+        this.messageService.add({
+          severity: 'success',
+          summary: 'OK',
+          detail: 'Sửa đổi số lượng sản phẩm nhập kho',
+          life: 3000,
+        });
+        this.purchaseOrdersForm.controls['purchaseOrdersWareHouse'].setValue(
+          products
+        );
       }
     });
   }
@@ -107,14 +115,20 @@ export class CreateComponent implements OnInit, OnDestroy {
 
   onSubmit(data: any): void {
     this.submitted = true;
-    this.purchaserOrdersService.createPurchaseOrders(this.purchaseOrdersForm.value).subscribe();
+    this.purchaserOrdersService
+      .createPurchaseOrders(this.purchaseOrdersForm.value)
+      .subscribe();
+
+    for (const pro of this.purchaseOrdersForm.value['purchaseOrdersWareHouse']) {
+      this.productsService
+      .updateProduct(pro.productId, pro).subscribe();
+    }
     this.messageService.add({
       severity: 'success',
       summary: 'OK',
       detail: 'Lưu thông tin đơn hàng thành công.',
-      life: 3000
+      life: 3000,
     });
     this.initPurchaseOrdersForm();
   }
-
 }

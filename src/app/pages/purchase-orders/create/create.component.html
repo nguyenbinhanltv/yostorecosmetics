@@ -86,8 +86,8 @@
                 </div>
                 <div class="p-field">
                   <p-multiSelect [options]="purchaseOrdersWareHouseOptions" formControlName="purchaseOrdersWareHouse"
-                      aria-describedby="purchaseOrdersWareHouse-help" optionLabel="productName" [(ngModel)]="wareHouse">
-                    </p-multiSelect>
+                    aria-describedby="purchaseOrdersWareHouse-help" optionLabel="productName" [(ngModel)]="wareHouse">
+                  </p-multiSelect>
                   <small id="purchaseOrdersWareHouse-help" class="p-invalid"
                     *ngIf="!purchaseOrdersForm.controls['purchaseOrdersWareHouse'].valid && purchaseOrdersForm.controls['purchaseOrdersWareHouse'].dirty">
                     Cần nhập kho hàng.

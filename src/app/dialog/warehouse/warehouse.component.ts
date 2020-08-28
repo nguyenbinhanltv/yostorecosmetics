@@ -21,7 +21,7 @@ export class WareHouse implements OnInit {
         console.log(this.dataWareHouse);
     }
 
-    editAmount(product: Product) {
-        console.log(product);
+    submitEditAmount(products: Product[]) {
+        this.ref.close(products);
     }
 }
