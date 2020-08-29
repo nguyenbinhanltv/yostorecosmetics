@@ -14,7 +14,7 @@
         <p-table *ngIf="isLoading" #dt [(value)]="products" [paginator]="true" [rows]="10" [rowHover]="true"
             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
             [showCurrentPageReport]="true"
-            [globalFilterFields]="['productName', 'productType', 'productMark', 'productOrigin', 'productTimeCreated']">
+            [globalFilterFields]="['productName', 'productType', 'productMark', 'productOrigin', 'productStatus', 'productTimeCreated']">
             <ng-template pTemplate="caption">
                 <div class="flex-box">
                     <h5>Tất cả sản phẩm</h5>
@@ -43,8 +43,8 @@
                         <h5>Xuất xứ <p-sortIcon field="productOrigin"></p-sortIcon>
                         </h5>
                     </th>
-                    <th pSortableColumn="canSale">
-                        <h5>Có thể bán <p-sortIcon field="canSale"></p-sortIcon>
+                    <th pSortableColumn="productStatus">
+                        <h5>Có thể bán <p-sortIcon field="productStatus"></p-sortIcon>
                         </h5>
                     </th>
                     <th pSortableColumn="productTimeCreated">

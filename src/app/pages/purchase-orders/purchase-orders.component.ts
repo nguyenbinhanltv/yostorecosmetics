@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { of, forkJoin } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import { PurchaseOrdersService } from 'app/services/purchase-orders.service';
+import { Product } from 'app/models/products.model';
 
 @Component({
   selector: 'app-purchase-orders',
@@ -12,6 +13,10 @@ export class PurchaseOrdersComponent implements OnInit {
   purchaseOrders = [];
 
   isLoading: boolean;
+
+  productDialog: boolean;
+  submitted: boolean;
+  products: Product[];
 
   constructor(
     private purchaseOrdersService: PurchaseOrdersService
@@ -27,6 +32,16 @@ export class PurchaseOrdersComponent implements OnInit {
 
   ngOnInit(): void {
     of(false).subscribe(val => this.isLoading = val);
+  }
+
+  editProducts(products: Product[]): void {
+    this.products = [ ...products];
+    this.productDialog = true;
+  }
+
+  hideDialog(): void {
+    this.productDialog = false;
+    this.submitted = false;
   }
 
 }

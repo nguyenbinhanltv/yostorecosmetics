@@ -14,6 +14,7 @@ import { PrimengModule } from 'app/primeng/primeng.module';
 import { OptionsService } from 'app/services/options.service';
 import { ProductsListService } from 'app/services/products-list.service';
 import { WareHouse } from 'app/dialog/warehouse/warehouse.component';
+import { ComponentsModule } from 'app/components/components.module';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { WareHouse } from 'app/dialog/warehouse/warehouse.component';
     FormsModule,
     ReactiveFormsModule,
     AdminLayoutRoutingModule,
-    PrimengModule
+    PrimengModule,
+    ComponentsModule
   ],
   declarations: [
     ProductsComponent,
@@ -31,7 +33,7 @@ import { WareHouse } from 'app/dialog/warehouse/warehouse.component';
     VariantsComponent,
     PurchaseOrdersComponent,
     PurchaseOrdersCreateComponent,
-    WareHouse
+    WareHouse,
   ],
   providers: [
     MessageService,

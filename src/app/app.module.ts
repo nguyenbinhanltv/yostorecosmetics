@@ -33,7 +33,7 @@ import { LoginComponent } from './pages/login/login.component';
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
     }),
     AccordionModule,
-    PrimengModule
+    PrimengModule,
   ],
   declarations: [
     AppComponent,

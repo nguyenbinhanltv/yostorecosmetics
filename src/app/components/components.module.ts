@@ -3,17 +3,19 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { PrimengModule } from 'app/primeng/primeng.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    PrimengModule
   ],
   declarations: [
-    SidebarComponent
+    SidebarComponent,
   ],
   exports: [
-    SidebarComponent
+    SidebarComponent,
   ]
 })
 export class ComponentsModule { }

@@ -5,13 +5,15 @@
                 Đơn nhập hàng
             </p>
         </div>
-        <button pButton type="button" label="Tạo đơn nhập hàng" routerLink="create" class="p-button-text" icon="pi pi-plus"></button>
+        <button pButton type="button" label="Tạo đơn nhập hàng" routerLink="create" class="p-button-text"
+            icon="pi pi-plus"></button>
     </div>
     <div class="container-fluid">
         <p-progressSpinner *ngIf="!isLoading"></p-progressSpinner>
         <p-table *ngIf="isLoading" #dt [value]="purchaseOrders" [paginator]="true" [rows]="10" [rowHover]="true"
             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-            [showCurrentPageReport]="true" [globalFilterFields]="['purchaseOrdersId', 'purchaseOrdersStaff', 'purchaseOrdersStatus' , 'purchaseOrdersPaymentStatus', 'purchaseOrdersWareHouse', 'purchaseOrdersTotalPrice', 'purchaseOrdersSupplier']">
+            [showCurrentPageReport]="true"
+            [globalFilterFields]="['purchaseOrdersId', 'purchaseOrdersStaff', 'purchaseOrdersStatus' , 'purchaseOrdersPaymentStatus', 'purchaseOrdersWareHouse', 'purchaseOrdersTotalPrice', 'purchaseOrdersSupplier']">
             <ng-template pTemplate="caption">
                 <div class="flex-box">
                     <h5>Tất cả đơn nhập hàng</h5>
@@ -84,11 +86,74 @@
                         <span class="p-tag p-tag-warning"
                             *ngIf="purchaseOrders.purchaseOrdersPaymentStatus == 'Unpaid'">{{purchaseOrders.purchaseOrdersPaymentStatus}}</span>
                     </td>
-                    <td>{{purchaseOrders.purchaseOrdersWareHouse}}</td>
+                    <td>
+                        <button (click)="editProducts(purchaseOrders.purchaseOrdersWareHouse)" pButton pRipple
+                            type="button" label="Xem chi tiết" class="p-button-text"
+                            icon="pi pi-external-link"></button>
+                    </td>
                     <td>{{purchaseOrders.purchaseOrdersTotalPrice}}</td>
                     <td>{{purchaseOrders.purchaseOrdersSupplier}}</td>
                 </tr>
             </ng-template>
         </p-table>
+
+        <p-dialog [(visible)]="productDialog" [style]="{width: '50vw'}" header="Product Details" [modal]="true"
+            styleClass="p-fluid">
+            <ng-template pTemplate="content">
+                <p-table #dt [(value)]="products" [paginator]="true" [rows]="10" [rowHover]="true"
+                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                    [showCurrentPageReport]="true"
+                    [globalFilterFields]="['productName', 'productType', 'productMark', 'productOrigin', 'productAmount', 'productTimeCreated']">
+                    <ng-template pTemplate="caption">
+                        <div class="flex-box">
+                            <h5>Tất cả sản phẩm</h5>
+                            <span class="p-input-icon-left">
+                                <i class="pi pi-search"></i>
+                                <input type="text" pInputText size="50" placeholder="Tìm kiếm sản phẩm"
+                                    (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+                            </span>
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th pSortableColumn="productName">
+                                <h5>Sản phẩm <p-sortIcon field="productName"></p-sortIcon>
+                                </h5>
+                            </th>
+                            <th pSortableColumn="productType">
+                                <h5>Loại <p-sortIcon field="productType"></p-sortIcon>
+                                </h5>
+                            </th>
+                            <th pSortableColumn="productMark">
+                                <h5>Nhãn hiệu <p-sortIcon field="productMark"></p-sortIcon>
+                                </h5>
+                            </th>
+                            <th pSortableColumn="productOrigin">
+                                <h5>Xuất xứ <p-sortIcon field="productOrigin"></p-sortIcon>
+                                </h5>
+                            </th>
+                            <th pSortableColumn="productAmount">
+                                <h5>Số lượng <p-sortIcon field="productAmount"></p-sortIcon>
+                                </h5>
+                            </th>
+                            <th pSortableColumn="productTimeCreated">
+                                <h5>Ngày khởi tạo <p-sortIcon field="productTimeCreated"></p-sortIcon>
+                                </h5>
+                            </th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-product>
+                        <tr>
+                            <td>{{product.productName}}</td>
+                            <td>{{product.productType}}</td>
+                            <td>{{product.productMark}}</td>
+                            <td>{{product.productOrigin}}</td>
+                            <td>{{product.productAmount}}</td>
+                            <td>{{product?.productTimeCreated}}</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </ng-template>
+        </p-dialog>
     </div>
 </div>
