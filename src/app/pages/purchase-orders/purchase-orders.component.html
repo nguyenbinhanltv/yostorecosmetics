@@ -9,6 +9,7 @@
             icon="pi pi-plus"></button>
     </div>
     <div class="container-fluid">
+        <p-toast [style]="{marginTop: '10px'}"></p-toast>
         <p-progressSpinner *ngIf="!isLoading"></p-progressSpinner>
         <p-table *ngIf="isLoading" #dt [value]="purchaseOrders" [paginator]="true" [rows]="10" [rowHover]="true"
             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
@@ -68,6 +69,11 @@
                             <p-sortIcon field="purchaseOrdersSupplier"></p-sortIcon>
                         </h5>
                     </th>
+                    <th>
+                        <h5>
+                            Edit
+                        </h5>
+                    </th>
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-purchaseOrders>
@@ -93,6 +99,12 @@
                     </td>
                     <td>{{purchaseOrders.purchaseOrdersTotalPrice}}</td>
                     <td>{{purchaseOrders.purchaseOrdersSupplier}}</td>
+                    <td>
+                        <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-mr-2"
+                            (click)="editPurchaseOrders(purchaseOrders)"></button>
+                        <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger"
+                            (click)="deletePurchaseOrders(purchaseOrders)"></button>
+                    </td>
                 </tr>
             </ng-template>
         </p-table>
@@ -155,5 +167,34 @@
                 </p-table>
             </ng-template>
         </p-dialog>
+
+        <p-dialog [(visible)]="purchaseOrdersDialog" [style]="{width: '50vw'}" header="PurchaseOrders Details"
+            [modal]="true" styleClass="p-fluid">
+            <ng-template pTemplate="content">
+                <div class="p-field">
+                    <label for="name">Trạng thái</label>
+                    <p-multiSelect [options]="purchaseOrdersStatusOptions"
+                        [(ngModel)]="purchaseOrder.purchaseOrdersStatus"
+                        aria-describedby="purchaseOrdersPaymentStatus-help" optionLabel="name">
+                    </p-multiSelect>
+                </div>
+                <div class="p-field">
+                    <label for="name">Thanh toán</label>
+                    <p-multiSelect [options]="purchaseOrdersPaymentStatusOptions"
+                        [(ngModel)]="purchaseOrder.purchaseOrdersPaymentStatus"
+                        aria-describedby="purchaseOrdersPaymentStatus-help" optionLabel="name">
+                    </p-multiSelect>
+                </div>
+            </ng-template>
+
+            <ng-template pTemplate="footer">
+                <button pButton pRipple label="Hủy" icon="pi pi-times" class="p-button-text"
+                    (click)="hideDialog()"></button>
+                <button pButton pRipple label="Lưu" icon="pi pi-check" class="p-button-text"
+                    (click)="savePurchaseOrders(purchaseOrder)"></button>
+            </ng-template>
+        </p-dialog>
+
+        <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
     </div>
 </div>
