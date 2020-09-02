@@ -29,6 +29,8 @@ export class CreateComponent implements OnInit {
   productOriginOptions: object;
   productUnitOptions: object;
 
+  exchangeRate: number;
+
   constructor(
     private fb: FormBuilder,
     private messageService: MessageService,
