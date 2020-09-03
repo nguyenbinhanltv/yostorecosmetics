@@ -87,8 +87,9 @@
                     <p-panel header="Giá sản phẩm" class="panel-right">
                         <div class="p-fluid forms-grid" style="margin: 1em 0">
                             <div style="display: flex; align-items: center; justify-content: center;">
-                                <button pButton type="button" label="Tính giá" [disabled]="!exchangeRate" (click)="calPrices()"
-                                    class="ui-button-raised" style="width: 50%;">
+                                <button pButton type="button" label="Tính giá"
+                                    [disabled]="!exchangeRate && !productForm.controls['productWeight'].valid"
+                                    (click)="calPrices()" class="ui-button-raised" style="width: 50%;">
                                 </button>
                             </div>
                             <div>
