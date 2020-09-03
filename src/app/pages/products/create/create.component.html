@@ -4,16 +4,20 @@
         <button pButton type="button" label="Quay lại danh sách sản phẩm" icon="pi pi-chevron-left"
             routerLink="/products" class="p-button-text">
         </button>
-        <div>
+        <div style="display: flex; justify-content: flex-start; align-items: center; flex-direction: row;">
             <p>
                 Thêm mới sản phẩm
             </p>
-        </div>
-        <div style="margin-left: 2vw;">
-            <p-inputNumber id="exchangeRate" aria-describedby="exchangeRate-help" [(ngModel)]="exchangeRate"
-                [showButtons]="false" buttonLayout="horizontal" spinnerMode="horizontal" mode="currency" currency="VND"
-                placeholder="Tỷ giá sản phẩm">
-            </p-inputNumber>
+            <div>
+                <p-inputNumber id="inputPrice" aria-describedby="inputPrice-help" [(ngModel)]="inputPrice"
+                    [showButtons]="false" buttonLayout="horizontal" spinnerMode="horizontal" mode="currency" currency="VND"
+                    placeholder="Giá gốc sản phẩm">
+                </p-inputNumber>
+                <p-inputNumber id="exchangeRate" aria-describedby="exchangeRate-help" [(ngModel)]="exchangeRate"
+                    [showButtons]="false" buttonLayout="horizontal" spinnerMode="horizontal" mode="currency" currency="VND"
+                    placeholder="Tỷ giá sản phẩm">
+                </p-inputNumber>
+            </div>
         </div>
     </div>
 
@@ -88,8 +92,8 @@
                         <div class="p-fluid forms-grid" style="margin: 1em 0">
                             <div style="display: flex; align-items: center; justify-content: center;">
                                 <button pButton type="button" label="Tính giá"
-                                    [disabled]="!exchangeRate && !productForm.controls['productWeight'].valid"
-                                    (click)="calPrices()" class="ui-button-raised" style="width: 50%;">
+                                    [disabled]="!inputPrice && !exchangeRate && !productForm.controls['productWeight'].valid"
+                                    (click)="calPrices(inputPrice, exchangeRate)" class="ui-button-raised" style="width: 50%;">
                                 </button>
                             </div>
                             <div>

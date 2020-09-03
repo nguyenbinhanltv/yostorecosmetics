@@ -30,6 +30,7 @@ export class CreateComponent implements OnInit {
   productUnitOptions: object;
 
   exchangeRate: number;
+  inputPrice: number;
 
   constructor(
     private fb: FormBuilder,
@@ -84,17 +85,19 @@ export class CreateComponent implements OnInit {
     this.initProductForm();
   }
 
-  calPrices() {
+  calPrices(inputPrice: number, exchangeRate: number): void {
     this.productForm.controls['productWholesalePrice'].setValue(
-      ''
+      ((inputPrice * 1.1 + Number(this.productForm.controls['productWeight'].value)) * exchangeRate)
     );
 
     this.productForm.controls['productRetailPrice'].setValue(
-      ''
+      ((inputPrice * 1.35 + Number(this.productForm.controls['productWeight'].value)) * exchangeRate)
     );
 
     this.productForm.controls['productStockPrice'].setValue(
-      ''
+      ((inputPrice * 1.2 + Number(this.productForm.controls['productWeight'].value)) * exchangeRate)
     );
+
+    console.log(this.productForm.value);
   }
 }
