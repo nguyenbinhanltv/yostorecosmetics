@@ -9,6 +9,12 @@
                 Thêm mới sản phẩm
             </p>
         </div>
+        <div style="margin-left: 2vw;">
+            <p-inputNumber id="exchangeRate" aria-describedby="exchangeRate-help" [(ngModel)]="exchangeRate"
+                [showButtons]="false" buttonLayout="horizontal" spinnerMode="horizontal" mode="currency" currency="VND"
+                placeholder="Tỷ giá sản phẩm">
+            </p-inputNumber>
+        </div>
     </div>
 
     <div class="container-fluid">
@@ -80,25 +86,8 @@
 
                     <p-panel header="Giá sản phẩm" class="panel-right">
                         <div class="p-fluid forms-grid" style="margin: 1em 0">
-                            <div>
-                                <div>
-                                    Tỷ giá *
-                                </div>
-                                <div class="p-field">
-                                    <p-inputNumber id="exchangeRate" aria-describedby="exchangeRate-help"
-                                        [(ngModel)]="exchangeRate" [showButtons]="false"
-                                        buttonLayout="horizontal" spinnerMode="horizontal" mode="currency"
-                                        currency="VND">
-                                    </p-inputNumber>
-                                    <small id="productRetailPrice-help" class="p-invalid"
-                                        *ngIf="!productForm.controls['productRetailPrice'].valid && productForm.controls['productRetailPrice'].dirty">
-                                        Cần nhập tỷ giá sản phẩm.
-                                    </small>
-                                </div>
-                            </div>
                             <div style="display: flex; align-items: center; justify-content: center;">
-                                <button pButton type="button" label="Tính giá"
-                                    [disabled]="!productForm.controls['productStockPrice'].valid" (click)="calPrices()"
+                                <button pButton type="button" label="Tính giá" [disabled]="!exchangeRate" (click)="calPrices()"
                                     class="ui-button-raised" style="width: 50%;">
                                 </button>
                             </div>
@@ -227,8 +216,8 @@
         <div style="display: flex; flex-direction: row-reverse;">
             <button pButton type="reset" label="Hủy" routerLink="/products"
                 class="ui-button-raised ui-button-secondary"></button>
-            <button pButton type="submit" label="Lưu" [disabled]="!productForm.valid" (click)="onSubmit(productForm.value)"
-                class="ui-button-raised"></button>
+            <button pButton type="submit" label="Lưu" [disabled]="!productForm.valid"
+                (click)="onSubmit(productForm.value)" class="ui-button-raised"></button>
         </div>
 
     </div>

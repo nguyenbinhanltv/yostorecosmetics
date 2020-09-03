@@ -84,5 +84,17 @@ export class CreateComponent implements OnInit {
     this.initProductForm();
   }
 
-  calPrices() {}
+  calPrices() {
+    this.productForm.controls['productWholesalePrice'].setValue(
+      ''
+    );
+
+    this.productForm.controls['productRetailPrice'].setValue(
+      ''
+    );
+
+    this.productForm.controls['productStockPrice'].setValue(
+      ''
+    );
+  }
 }
